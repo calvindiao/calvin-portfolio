@@ -4,7 +4,7 @@ import { unified } from '@astrojs/markdown-remark';
 import legacyImages from './scripts/legacy-images.mjs';
 
 export default defineConfig({
-  site: process.env.SITE_URL || 'https://calvin-portfolio.pages.dev',
+  site: process.env.SITE_URL || 'https://calvin-portfolio-g3m.pages.dev',
   output: 'static',
   trailingSlash: 'always',
   integrations: [sitemap()],

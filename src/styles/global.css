@@ -555,6 +555,7 @@ button:focus-visible, a:focus-visible, summary:focus-visible, [tabindex]:focus-v
   .workspace-page .work-section, .workspace-page .about-teaser { width: calc(100% - 40px); }
 }
 @media (prefers-reduced-motion: reduce) { .dock-icon { transition: none; } }
+html:not(.js) .js-only { display: none !important; }
 @media (min-width: 1001px) {
   .workspace .project-tabs button { font-size: 12px; }
   .welcome-summary { font-size: 13px; }

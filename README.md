@@ -1,6 +1,6 @@
 # Calvin Diao's portfolio
 
-A custom, two-dimensional engineering portfolio built with Astro and TypeScript. Real project imagery and click-to-load demos are the center of the experience. The original technical articles remain available at their existing URLs.
+A custom, two-dimensional engineering workspace built with Astro and TypeScript. Real project imagery and click-to-load demos are the center of the experience. The original technical articles remain available at their existing URLs.
 
 ## Local development
 
@@ -33,12 +33,14 @@ Article URLs retained: `/ar-panoramic-calling/`, `/gsoc/`, `/wearable-rehab-moca
 
 ## Independent Cloudflare preview
 
+Live preview: [calvin-portfolio-g3m.pages.dev](https://calvin-portfolio-g3m.pages.dev). Cloudflare Pages is connected to this repository and deploys `main` automatically.
+
 Create a separate Cloudflare Pages project named `calvin-portfolio`. Use Node 24, the `main` branch, build command `npm run build`, and output directory `dist`.
 
 For an authenticated direct deployment:
 
 ```sh
-SITE_URL=https://calvin-portfolio.pages.dev npm run build
+SITE_URL=https://calvin-portfolio-g3m.pages.dev npm run build
 npm run deploy:preview
 ```
 
@@ -46,7 +48,7 @@ If Cloudflare assigns another hostname, set `SITE_URL` to that actual HTTPS orig
 
 The preview intentionally uses a robots disallow rule, a `noindex, nofollow` meta tag, and an `X-Robots-Tag` header. A later production-domain migration must update `SITE_URL` and deliberately remove all three preview indexing restrictions. `404.html` ensures missing paths return a real not-found page instead of the Cloudflare SPA fallback.
 
-GitHub Actions validates pull requests and `main` under Node 24. Cloudflare Git integration can rebuild on pushes once connected.
+GitHub Actions validates pull requests and `main` under Node 24. Cloudflare builds with `NODE_VERSION=24`, `ASTRO_TELEMETRY_DISABLED=1`, and the actual `SITE_URL`.
 
 ## Browser acceptance
 
