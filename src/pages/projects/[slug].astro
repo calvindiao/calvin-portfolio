@@ -1,20 +1,83 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { ArrowLeft, ArrowRight, ArrowUpRight } from '@lucide/astro';
 import Layout from '../../layouts/Layout.astro';
-import ResponsiveImage from '../../components/ResponsiveImage.astro';
+import Media from '../../components/Media.astro';
+import BlockDiagram from '../../components/BlockDiagram.astro';
 import Gallery from '../../components/Gallery.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
 import { getImage } from '../../data/images';
-export async function getStaticPaths() { return (await getCollection('projects')).map(project => ({params:{slug:project.id},props:{project}})); }
-const { project } = Astro.props;
+export async function getStaticPaths() {
+  const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+  return projects.map((project, index) => ({
+    params: { slug: project.id },
+    props: { project, next: projects[(index + 1) % projects.length] }
+  }));
+}
+const { project, next } = Astro.props;
 const { Content } = await render(project);
-const cover = getImage(project.data.cover);
+const data = project.data;
 ---
-<Layout title={project.data.title} description={project.data.summary} image={cover.src.endsWith('.svg') ? '/media/share.png' : cover.src}>
-  <article class="shell project-page">
-    <a class="back-link" href="/#work">All projects</a>
-    <header class="page-heading"><p class="project-context">{project.data.field} / {project.data.year}</p><h1>{project.data.title}</h1><p class="page-lead">{project.data.summary}</p></header>
-    <div class="detail-media" data-video={project.data.video} data-video-title={`${project.data.title} demo`}><ResponsiveImage image={project.data.cover} alt={project.data.coverAlt} priority sizes="(max-width: 1400px) 95vw, 1250px" />{project.data.video && <button class="button primary detail-watch js-only" data-watch><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l12-7z"/></svg>Watch demo</button>}</div>
-    <div class="detail-columns"><aside class="project-aside"><h2>My contribution</h2><ul class="highlights">{project.data.highlights.map(item=><li>{item}</li>)}</ul><p class="tools">{project.data.tools.join(' / ')}</p>{project.data.video ? <a href={`https://www.youtube.com/watch?v=${project.data.video}`} target="_blank" rel="noopener noreferrer">Watch on YouTube</a> : <div class="stack-links"><a href={project.data.contributions} target="_blank" rel="noopener noreferrer">View contributions</a><a href={project.data.code} target="_blank" rel="noopener noreferrer">Read the code review</a></div>}</aside><div class="prose"><Content /><a class="button secondary article-link" href={project.data.article}>Read the technical write-up</a></div></div>
-    <section class="gallery-section"><h2>A closer look.</h2><Gallery images={project.data.gallery} /></section>
-  </article>
+<Layout title={data.title} description={`${data.summary} ${data.context}.`} image={data.cover === 'chromium-flow' ? '/share.png' : getImage(data.cover).src}>
+  <section class="page-hero stage project-hero" aria-labelledby="project-title">
+    <div class="shell project-hero-inner">
+      <a class="back-link" href="/#projects"><ArrowLeft size={16} aria-hidden="true" />All projects</a>
+      <p class="kicker">{!data.context.includes(String(data.year)) && <span>{data.year}</span>}<span>{data.context}</span></p>
+      <h1 id="project-title">{data.title}</h1>
+      <p class="page-lead">{data.summary}</p>
+      <Media class="project-media" project={project} priority sizes="(max-width: 1100px) 94vw, 1040px" />
+    </div>
+  </section>
+
+  <div class="shell project">
+    <dl class="facts">
+      {data.specs.map(spec => (
+        <div class="fact">
+          <dt>{spec.parameter}</dt>
+          <dd class="fact-value">{spec.value}{spec.unit && <span class:list={['fact-unit', { 'fact-unit-symbol': /^[°%]$/.test(spec.unit) }]}>{spec.unit}</span>}</dd>
+          {spec.condition && <dd class="fact-cond">{spec.condition}</dd>}
+        </div>
+      ))}
+    </dl>
+
+    <div class="project-body">
+      <section class="project-built" aria-labelledby="built-title">
+        <h2 id="built-title">What I built</h2>
+        <ul class="ticks">{data.highlights.map(item => <li>{item}</li>)}</ul>
+        <div class="prose"><Content /></div>
+      </section>
+      <aside class="project-aside" aria-label="Project details">
+        <div class="aside-block">
+          <h2 class="aside-title">Tools</h2>
+          <ul class="tags">{data.tools.map(tool => <li>{tool}</li>)}</ul>
+        </div>
+        <div class="aside-block">
+          <h2 class="aside-title">Links</h2>
+          <ul class="link-list">
+            {data.video && <li><a href={`https://www.youtube.com/watch?v=${data.video}`} target="_blank" rel="noopener noreferrer">Demo video on YouTube<ArrowUpRight size={15} aria-hidden="true" /></a></li>}
+            {data.code && <li><a href={data.code} target="_blank" rel="noopener noreferrer">Main change list in Gerrit<ArrowUpRight size={15} aria-hidden="true" /></a></li>}
+            {data.contributions && <li><a href={data.contributions} target="_blank" rel="noopener noreferrer">All my Chromium changes<ArrowUpRight size={15} aria-hidden="true" /></a></li>}
+            <li><a href={data.article}>The full write-up<ArrowRight size={15} aria-hidden="true" /></a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <section class="project-section" aria-labelledby="how-title">
+      <h2 id="how-title">How it works</h2>
+      <BlockDiagram project={project} />
+    </section>
+
+    {data.gallery.length > 0 && (
+      <section class="project-section" aria-labelledby="gallery-title">
+        <h2 id="gallery-title">A closer look</h2>
+        <Gallery images={data.gallery} />
+      </section>
+    )}
+
+    <section class="project-section next-project" aria-labelledby="next-title">
+      <h2 id="next-title">Next project</h2>
+      <ProjectCard project={next} size="wide" />
+    </section>
+  </div>
 </Layout>

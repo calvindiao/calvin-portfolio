@@ -37,7 +37,7 @@ The system integrates multiple **hardware** and **software** technologies, cover
 </p>
 
 - Implemented a **Quaternion-based Kalman Filtering algorithm** to fuse data from accelerometers, gyroscopes, and magnetometers, effectively solving Euler angle gimbal lock and sensor drift issues. 
-- Developed the embedded firmware in **C/C++**on the **STM32L0 platform**, managing task scheduling and low-power operation. 
+- Developed the embedded firmware in **C/C++** on the **STM32L0 platform**, managing task scheduling and low-power operation. 
 - Built a host analysis system using **MATLAB** to perform **Inverse Kinematics (IK)** Algorithm. This allows for precise reconstruction of limbs motions based on sensor data. 
 - Ported the **FATFS file system** to enable high-speed, real-time offline storage of motion data onto an SD card via the SDIO interface. 
 

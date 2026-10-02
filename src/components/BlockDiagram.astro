@@ -1,0 +1,20 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { project: CollectionEntry<'projects'>; }
+const { project } = Astro.props;
+const { nodes, links, note } = project.data.system;
+const marksOwnership = nodes.some(node => node.mine);
+---
+<figure class="flow-figure">
+  <ol class="flow" aria-label={`How ${project.data.title} works, step by step`}>
+    {nodes.map((node, index) => (
+      <li class:list={['flow-node', { 'flow-mine': node.mine, 'flow-external': marksOwnership && !node.mine }]}>
+        <span class="flow-kind">{node.kind}</span>
+        <strong class="flow-title">{node.title}</strong>
+        <span class="flow-detail">{node.detail}</span>
+        {index < links.length && <span class="flow-arrow"><span>{links[index]}</span></span>}
+      </li>
+    ))}
+  </ol>
+  <figcaption class="media-caption">{marksOwnership ? 'Orange-topped blocks are the parts I built; dashed blocks are platforms or off-the-shelf hardware.' : `${project.data.context}; the blocks show the system as built.`} {note}</figcaption>
+</figure>

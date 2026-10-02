@@ -1,6 +1,5 @@
 ---
 title: A robot that follows sound
-shortTitle: Smart Car 2020
 summary: Find an acoustic beacon and drive toward it using a microphone array.
 year: 2020
 order: 4
@@ -15,6 +14,21 @@ highlights:
 tools: [C/C++, Signal processing, OpenMV, PCB]
 video: 9fxU5Fqx_os
 article: /smart-car-2020/
+shortTitle: "Sound-following robot"
+context: "Team project, 15th National Smart Car Competition"
+badge: { label: "National 2nd Prize", icon: "trophy" }
+system:
+  nodes:
+    - { kind: "Listen", title: "Microphone array", detail: "Hears the acoustic beacon" }
+    - { kind: "Sample", title: "8-bit parallel ADC", detail: "High-speed sampling for the array" }
+    - { kind: "MCU 1", title: "Signal MCU", detail: "FFT and cross-correlation give the beacon’s direction" }
+    - { kind: "MCU 2", title: "Control MCU", detail: "PID and Kalman-filtered attitude drive the chassis" }
+  links: ["audio", "samples", "direction"]
+specs:
+  - { parameter: "Result", condition: "15th National Smart Car Competition", value: "National Second Prize" }
+  - { parameter: "Regional result", condition: "East China division", value: "First Prize" }
+  - { parameter: "Microcontrollers", condition: "Signal processing / vehicle control", value: "2" }
+  - { parameter: "Sampling", condition: "Microphone array", value: "8-bit parallel ADC" }
 ---
 
 This competition robot listens before it moves. A microphone array detects an acoustic beacon, and a Mecanum-wheeled chassis drives toward the source while correcting its position.

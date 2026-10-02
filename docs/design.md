@@ -1,50 +1,53 @@
-# Calvin's workspace
+# Design
 
-The opening is a usable, two-dimensional personal desktop. Visitors can understand Calvin's work from a short introduction, choose one of five project files, and immediately play a real demo. The AR project is already open on arrival.
+The site is built for the few seconds a recruiter gives it. The home page answers three questions in order: who is this, what has he built, and how do I reach him. Everything else lives one click away.
+
+## Home page
+
+| Part | Content |
+| --- | --- |
+| Hero | Full screen on the dark stage. "Hi, I'm Calvin Diao.", the role ("Software engineer, from circuit boards to Chromium."), one sentence listing what he has built, two buttons, the photo with the "Coding is a game." sticker, and four credentials (Chromium, General Motors, Samsung R&D, McMaster) |
+| Projects | "Things I've built." Five cards: two large, three small. Each card shows the picture, one credential badge, the year and field, the title, one sentence and the tools. The whole card links to the project page |
+| Contact | Back on the stage: "Let's talk.", the email address with a copy button, and profile links. It closes every page |
+
+The hero fits a 1366 × 768 screen, credentials included. On phones the name, role and buttons fit the first screen.
+
+## Project pages
+
+A dark header with the title, one sentence and the demo video (click to load), which overlaps onto the paper. Below it, in reading order: four key facts, what Calvin built (highlights, then the write-up), tools and links, how it works (a chain of blocks; orange-topped blocks are Calvin's work, dashed blocks are platforms or off-the-shelf parts), photos, and the next project.
+
+The About page is a plain résumé: experience, education, research, patents, scholarships and awards. Writing lists the original blog articles.
 
 ## Visual system
 
-- White windows: `#FFFFFF`
-- Desktop: `#E9EDF1`
-- Graphite text: `#252629`
-- Secondary text: `#686C75`
-- Action blue: `#365CF5`
-- Window edge: `#BFC7D0`
+| Token | Light | Dark | Use |
+| --- | --- | --- | --- |
+| `--paper` | `#F4F3EE` | `#131512` | Page |
+| `--card` | `#FFFFFF` | `#1B1E1A` | Project cards, the project aside |
+| `--ink` | `#121412` | `#EDEEE8` | Text, rules |
+| `--accent` | `#B23C0B` | `#FF8A52` | Links and labels on paper |
+| `--stage` | `#10120F` | `#0B0C0B` | The dark bands: masthead, page heroes, contact |
+| `--spark` | `#FF6B2C` | same | Buttons, badges, the brand mark |
 
-Instrument Sans supplies the locally hosted variable typeface. The desktop uses small, functional window chrome, readable project titles, and large real project images. Blue identifies actions and the selected file. The wallpaper is a quiet native CSS dot pattern; there are no unrelated stock photos.
+Copper orange is the only accent. It marks what to click and what won (the badges), and appears as the period after the name. The stage carries a faint perfboard dot grid and a warm glow; the paper stays plain.
 
-## Desktop arrangement
+Type: **Archivo** (variable width and weight) for display and body, set expanded and heavy for the name and section titles. **Martian Mono** is used only for small labels: years, fields and tools.
 
-```text
-+ Read me --------+     + AR Calling / Project viewer ----------------+
-| Calvin Diao.    |     |                                             |
-| From circuits  |     |   Real project image     Title & summary     |
-| to Chromium.   |     |                                             |
-| Short intro    |     |   [Watch demo]             [Explore project] |
-| Contact links  |     +---------------------------------------------+
-+----------------+
-+ Projects ------+
-| AR Calling     |
-| Chromium       |                 [ Projects About Writing GitHub Email ]
-| Motion Capture |
-| Smart Car 2021 |
-| Smart Car 2020 |
-+----------------+
-```
+Motion: the hero rises in once on load, cards lift on hover, and the sticker straightens when the photo is hovered. Reduced motion turns all of it off.
 
-Window title bars support dragging and keyboard arrow movement. The project viewer can be minimized, restored, or expanded. The dock opens concise About and Writing windows; those windows can be closed with their button or Escape. Reset workspace restores the arrangement. Choosing a project stops and unloads the previous video.
+## Images
 
-Below the desktop, a large-image project archive, brief experience, and contact section provide a normal reading path. Full project pages and all six original article URLs remain available. On phones the workspace stacks the introduction, a horizontal project selector, and the demo window. Tablets use a two-window introduction row and the viewer beneath it. Reduced motion disables animation.
+- Project photos are Calvin's originals from the blog.
+- `mocap/pose-pairs.jpg` is derived from `mocap/prototype.png`: two poses, each real photo next to its reconstructed skeleton, recomposed as a landscape cover.
+- The Chromium cover is an inline SVG (`ChromiumFigure.astro`), an illustration with example values. It is not a shipped browser screen.
+- The panda mark (`Panda.astro`, `public/favicon.svg`) is redrawn from the techliker.com favicon. It also appears in Calvin's own PCB silkscreen.
+- `public/share.png` is rendered from the home page hero at 1200 × 630. Re-render it when the hero changes.
 
-## References and open resources
+## Content rules
 
-- [Henry Heffernan](https://henryheffernan.com/), [portfolio source](https://github.com/henryjeff/portfolio-website), and [2D OS source](https://github.com/henryjeff/portfolio-inner-site): the user's primary reference for an explorable desktop and content windows. The Astro window system is original implementation; no Henry code, games, models, or other assets are imported.
-- [Rauno Freiberg](https://rauno.me/): careful typography and focused interaction.
-- [Dennis Snellenberg](https://dennissnellenberg.com/): image-led project presentation and quiet navigation.
-- [Brittany Chiang](https://brittanychiang.com/) and [her open-source portfolio](https://github.com/bchiang7/v4): concise professional context and project summaries.
-- [Codrops Slideshow Animations](https://github.com/codrops/SlideshowAnimations): image transition pacing. No third-party demo images or code imported.
-- [Lucide for Astro](https://lucide.dev/guide/astro): reusable SVG icons, ISC license.
-- [Motion](https://motion.dev/docs/animate): mini animation module for short transitions, MIT license.
-- [Instrument Sans](https://github.com/Instrument/instrument-sans): locally hosted font, SIL Open Font License.
+Every claim on the site comes from Calvin's original write-ups or About page. The key facts are the values documented in those write-ups, including their limits. Team projects are labeled as team projects, and the block diagrams mark ownership only where the write-up states it.
 
-All project photography remains Calvin's original public material. The Chromium diagram is explicitly a conceptual illustration, not a shipped interface screenshot.
+## References
+
+- [Archivo](https://github.com/Omnibus-Type/Archivo) and [Martian Mono](https://github.com/evilmartians/mono), SIL Open Font License.
+- [Lucide](https://lucide.dev/), ISC license.
