@@ -1,0 +1,6 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+const posts=(await getCollection('writing')).sort((a,b)=>b.data.date.localeCompare(a.data.date));
+---
+<Layout title="Writing" description="Technical notes and original project write-ups by Calvin Diao."><div class="shell writing-page"><header class="page-heading"><h1>Behind the builds.</h1><p class="page-lead">The longer stories: decisions, implementation, and things I learned.</p></header><div class="writing-list">{posts.map(post=><a href={post.data.legacyPath}><time datetime={post.data.date}>{new Date(`${post.data.date}T12:00:00Z`).toLocaleDateString('en-CA',{year:'numeric',month:'short',timeZone:'UTC'})}</time><h2>{post.data.title}</h2><span>Read article</span></a>)}</div></div></Layout>

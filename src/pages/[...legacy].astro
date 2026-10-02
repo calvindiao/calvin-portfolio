@@ -1,0 +1,10 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+export async function getStaticPaths() { return (await getCollection('writing')).map(post=>({params:{legacy:post.data.legacyPath.replace(/^\/|\/$/g,'')},props:{post}})); }
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<Layout title={post.data.title} description={`Original project write-up: ${post.data.title}. By Calvin Diao.`}>
+  <article class="shell article-page"><a class="back-link" href="/writing/">All writing</a><header class="page-heading"><h1>{post.data.title}</h1><p class="article-date"><time datetime={post.data.date}>{post.data.date}</time> · Original project write-up</p>{post.data.project && <a class="text-link" href={`/projects/${post.data.project}/`}>See the project & demo</a>}</header><div class="prose article-prose"><Content /></div></article>
+</Layout>

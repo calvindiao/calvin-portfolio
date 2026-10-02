@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import { Content as ProfileDetails } from '../content/profile.md';
+---
+<Layout title="About" description="Calvin Diao is an engineer working across software, embedded systems, and hardware. Learn about his background and projects.">
+  <div class="shell about-page"><div class="about-heading"><div><a class="back-link" href="/">Back to the work</a><h1>Hi, I’m Calvin.</h1><p class="page-lead">An engineer who enjoys the whole path from a circuit board to the software running on it.</p></div><div class="about-portrait"><ResponsiveImage image="avatar.jpg" priority sizes="(max-width: 700px) 180px, 300px" /></div></div>
+  <div class="about-body"><div class="prose"><p>I describe myself as a tangible full-stack engineer. I enjoy designing electronics, bringing hardware to life with embedded software, and connecting it to larger software systems.</p><p>I contributed to Chromium through Google Summer of Code in 2025 and completed my M.Eng. in Computing and Software at McMaster. Previously, I worked at General Motors and Samsung’s R&D center.</p><p>Away from projects, I enjoy movies, working out, my home-theater setup, and time with my cat, Tandy.</p><a class="button primary" href="mailto:diaochenhao@gmail.com">Say hello</a></div>
+  <section class="experience"><h2>A few chapters.</h2><dl><div><dt>Chromium / GSoC</dt><dd>Open-source contributor <span>May–August 2025</span></dd></div><div><dt>General Motors</dt><dd>Software Engineer <span>September 2024–August 2025</span></dd></div><div><dt>Samsung R&D</dt><dd>Software Development Engineer <span>September 2022–December 2023</span></dd></div><div><dt>McMaster University</dt><dd>M.Eng., Computing and Software <span>January 2024–December 2025</span></dd></div></dl></section></div>
+  <details class="profile-details"><summary>Education, publications, and awards</summary><div class="prose"><ProfileDetails /></div></details></div>
+</Layout>

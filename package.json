@@ -1,0 +1,31 @@
+{
+  "name": "calvin-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "npm run prepare:assets && astro dev --host 127.0.0.1",
+    "prepare:assets": "node scripts/prepare-assets.mjs",
+    "check": "npm run prepare:assets && astro check",
+    "build": "npm run prepare:assets && astro build && node scripts/verify-build.mjs",
+    "preview": "astro preview --host 127.0.0.1",
+    "deploy:preview": "wrangler pages deploy dist --project-name calvin-portfolio --branch main"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "7.3.1",
+    "@astrojs/sitemap": "3.7.4",
+    "@fontsource-variable/instrument-sans": "5.3.0",
+    "@lucide/astro": "1.49.0",
+    "astro": "7.3.5",
+    "motion": "13.5.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "sharp": "0.35.5",
+    "typescript": "5.9.3",
+    "wrangler": "4.146.0"
+  }
+}

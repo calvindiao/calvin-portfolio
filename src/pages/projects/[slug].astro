@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ResponsiveImage from '../../components/ResponsiveImage.astro';
+import Gallery from '../../components/Gallery.astro';
+import { getImage } from '../../data/images';
+export async function getStaticPaths() { return (await getCollection('projects')).map(project => ({params:{slug:project.id},props:{project}})); }
+const { project } = Astro.props;
+const { Content } = await render(project);
+const cover = getImage(project.data.cover);
+---
+<Layout title={project.data.title} description={project.data.summary} image={cover.src.endsWith('.svg') ? '/media/share.png' : cover.src}>
+  <article class="shell project-page">
+    <a class="back-link" href="/#work">All projects</a>
+    <header class="page-heading"><p class="project-context">{project.data.field} / {project.data.year}</p><h1>{project.data.title}</h1><p class="page-lead">{project.data.summary}</p></header>
+    <div class="detail-media" data-video={project.data.video} data-video-title={`${project.data.title} demo`}><ResponsiveImage image={project.data.cover} alt={project.data.coverAlt} priority sizes="(max-width: 1400px) 95vw, 1250px" />{project.data.video && <button class="button primary detail-watch js-only" data-watch><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l12-7z"/></svg>Watch demo</button>}</div>
+    <div class="detail-columns"><aside class="project-aside"><h2>My contribution</h2><ul class="highlights">{project.data.highlights.map(item=><li>{item}</li>)}</ul><p class="tools">{project.data.tools.join(' / ')}</p>{project.data.video ? <a href={`https://www.youtube.com/watch?v=${project.data.video}`} target="_blank" rel="noopener noreferrer">Watch on YouTube</a> : <div class="stack-links"><a href={project.data.contributions} target="_blank" rel="noopener noreferrer">View contributions</a><a href={project.data.code} target="_blank" rel="noopener noreferrer">Read the code review</a></div>}</aside><div class="prose"><Content /><a class="button secondary article-link" href={project.data.article}>Read the technical write-up</a></div></div>
+    <section class="gallery-section"><h2>A closer look.</h2><Gallery images={project.data.gallery} /></section>
+  </article>
+</Layout>

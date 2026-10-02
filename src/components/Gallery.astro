@@ -1,0 +1,9 @@
+---
+import ResponsiveImage from './ResponsiveImage.astro';
+import { getImage } from '../data/images';
+interface Props { images: string[]; }
+const { images } = Astro.props;
+---
+<div class="gallery">
+  {images.map(key => <figure><a href={getImage(key).src} data-image={getImage(key).src} data-alt={getImage(key).alt} aria-label={`Enlarge: ${getImage(key).alt}`}><ResponsiveImage image={key} sizes="(max-width: 700px) 100vw, 45vw" /></a><figcaption>{getImage(key).alt}</figcaption></figure>)}
+</div>

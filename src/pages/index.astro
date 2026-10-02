@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import { ArrowUpRight } from '@lucide/astro';
+import Layout from '../layouts/Layout.astro';
+import ProjectStage from '../components/ProjectStage.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+const projects = (await getCollection('projects')).sort((a,b)=>a.data.order-b.data.order);
+---
+<Layout workspace>
+  <div class="shell">
+    <ProjectStage projects={projects} />
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="section-intro"><h2 id="work-title">Selected work.</h2><p>From a browser’s internals to a robot on a track.</p></div>
+      <div class="work-grid">{projects.map(project => <article class:list={['work-item', `work-${project.id}`]}><a class="work-visual" href={`/projects/${project.id}/`} aria-label={`Explore ${project.data.title}`}><ResponsiveImage image={project.data.cover} alt={project.data.coverAlt} sizes="(max-width: 700px) 94vw, 46vw" /><span class="work-open" aria-hidden="true"><ArrowUpRight size={25} /></span></a><div class="work-meta"><span>{project.data.field}</span><span>{project.data.year}</span></div><h3><a href={`/projects/${project.id}/`}>{project.data.title}</a></h3><p>{project.data.summary}</p></article>)}</div>
+    </section>
+    <section class="about-teaser" aria-labelledby="about-teaser-title"><div class="about-teaser-copy"><div class="portrait"><ResponsiveImage image="avatar.jpg" sizes="96px" /></div><h2 id="about-teaser-title">Curiosity,<br />with a practical side.</h2><p>I enjoy the whole path from a circuit board to the software running on it. That has taken me through embedded control, cloud video, and Chromium’s networking stack.</p><a class="text-link" href="/about/">More about me<ArrowUpRight size={19} aria-hidden="true" /></a></div><div class="home-experience"><h3>A few places along the way.</h3><div><span>Google Summer of Code</span><p>Chromium contributor</p><time>2025</time></div><div><span>General Motors</span><p>Software Engineer</p><time>2024–2025</time></div><div><span>Samsung R&D</span><p>Software Development Engineer</p><time>2022–2023</time></div><div><span>McMaster University</span><p>M.Eng., Computing and Software</p><time>2024–2025</time></div><a class="text-link" href="/writing/">Technical notes & project stories<ArrowUpRight size={18} aria-hidden="true" /></a></div></section>
+  </div>
+</Layout>

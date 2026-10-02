@@ -1,0 +1,38 @@
+---
+import '@fontsource-variable/instrument-sans/wght.css';
+import { ArrowUpRight, Mail, X } from '@lucide/astro';
+import '../styles/global.css';
+interface Props { title?: string; description?: string; image?: string; workspace?: boolean; }
+const { title, workspace = false, description = 'Calvin Diao builds software that connects to the real world. Explore Chromium contributions, AR calling, wearable sensors, and autonomous robots.', image = '/media/share.png' } = Astro.props;
+const pageTitle = title ? `${title} | Calvin Diao` : 'Calvin Diao — From circuits to Chromium';
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const current = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#FFFFFF" /><meta name="robots" content="noindex, nofollow" />
+    <title>{pageTitle}</title><meta name="description" content={description} /><link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" /><meta property="og:title" content={pageTitle} /><meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} /><meta property="og:image" content={new URL(image, Astro.site)} /><meta property="og:site_name" content="Calvin Diao" />
+    <meta name="twitter:card" content="summary_large_image" /><link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+  <body class:list={{ 'workspace-page': workspace }}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header shell">
+      <a class="brand" href="/" aria-label="Calvin Diao home"><span class="brand-mark" aria-hidden="true">cd<span></span></span><span>Calvin Diao</span></a>
+      <nav aria-label="Main navigation"><a href="/#work" aria-current={current === '/' ? 'page' : undefined}>Work</a><a href="/about/" aria-current={current === '/about/' ? 'page' : undefined}>About</a><a href="/writing/" aria-current={current === '/writing/' ? 'page' : undefined}>Writing</a></nav>
+      <a class="header-contact" href="mailto:diaochenhao@gmail.com" aria-label="Email Calvin">Let’s talk <ArrowUpRight size={17} aria-hidden="true" /></a>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer shell">
+      <div class="footer-invitation"><h2>Let’s make<br />something work.</h2><a href="mailto:diaochenhao@gmail.com"><Mail size={20} aria-hidden="true" />diaochenhao@gmail.com</a></div>
+      <div class="contact-links"><a href="mailto:diaochenhao@gmail.com">Email</a><a href="https://www.linkedin.com/in/chenhaodiao/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/calvindiao" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.youtube.com/channel/UCBAZdJjdLNMW2AyROlvH1NQ" target="_blank" rel="noopener noreferrer">YouTube</a></div>
+      <p class="footer-note"><span>© {new Date().getUTCFullYear()} Calvin Diao</span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Writing & photos: CC BY-NC-SA 4.0</a></p>
+    </footer>
+    <dialog class="image-dialog" aria-label="Expanded project image"><button class="dialog-close" aria-label="Close image">Close <X size={18} aria-hidden="true" /></button><img alt="" /><p class="dialog-caption"></p></dialog>
+    <script>import '../scripts/interactions';</script>
+  </body>
+</html>
