@@ -1,0 +1,23 @@
+---
+// Conceptual illustration for the Chromium project: a resolver's Extended DNS Error,
+// the FilteringDetails Chromium parses from it, and the URL the generator expands. Values are examples.
+---
+<svg class="chromium-figure" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration with example values: a DNS response carries an Extended DNS Error with resolver operator and incident fields; Chromium parses them into FilteringDetails and expands them into a details URL.">
+  <rect class="cf-bg" width="600" height="400" />
+  <g class="cf-grid">{Array.from({ length: 14 }, (_, i) => <line x1={i * 44 + 14} y1="0" x2={i * 44 + 14} y2="400" />)}</g>
+  <text class="cf-mono cf-dim" x="40" y="100"><tspan class="cf-prompt">$</tspan> dig blocked.example</text>
+  <text class="cf-mono" x="40" y="132"><tspan class="cf-dim">;; EDE 15:</tspan> <tspan class="cf-hot">Blocked</tspan></text>
+  <text class="cf-mono" x="40" y="163"><tspan class="cf-dim">{'{'}</tspan><tspan class="cf-key">"ro"</tspan><tspan class="cf-dim">:</tspan><tspan class="cf-val">"dns.example"</tspan><tspan class="cf-dim">,</tspan><tspan class="cf-key">"inc"</tspan><tspan class="cf-dim">:</tspan><tspan class="cf-val">"a1b2c3"</tspan><tspan class="cf-dim">{'}'}</tspan></text>
+  <path class="cf-wire" d="M62 178 V 214" /><path class="cf-head" d="M56 206 62 216 68 206Z" />
+  <text class="cf-label" x="78" y="202">Chromium parses it, in C++</text>
+  <rect class="cf-box" x="36" y="228" width="250" height="104" rx="10" />
+  <text class="cf-cap" x="56" y="256">FilteringDetails</text>
+  <text class="cf-mono" x="56" y="286"><tspan class="cf-dim">operator </tspan><tspan class="cf-val">dns.example</tspan></text>
+  <text class="cf-mono" x="56" y="312"><tspan class="cf-dim">incident </tspan><tspan class="cf-val">a1b2c3</tspan></text>
+  <path class="cf-wire" d="M286 280 H 314" /><path class="cf-head" d="M306 274 316 280 306 286Z" />
+  <rect class="cf-box cf-box-out" x="322" y="228" width="242" height="104" rx="10" />
+  <text class="cf-cap" x="342" y="256">Details link</text>
+  <text class="cf-mono cf-small" x="342" y="286">dns.example</text>
+  <text class="cf-mono cf-small" x="342" y="312"><tspan class="cf-dim">/inc/</tspan><tspan class="cf-val">a1b2c3</tspan></text>
+  <text class="cf-note" x="40" y="360">Illustration, example values. Feature-flagged, off by default.</text>
+</svg>

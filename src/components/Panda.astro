@@ -1,0 +1,22 @@
+---
+// Calvin's panda mark, redrawn from the techliker.com favicon. Dark parts use currentColor;
+// the face uses --panda-face so the mark works as ink on paper, silkscreen on a board, or laser marking on a chip.
+interface Props { bamboo?: boolean; class?: string; }
+const { bamboo = true, class: className } = Astro.props;
+---
+<svg class:list={['panda', className]} viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+  <g fill="currentColor"><circle cx="13.5" cy="15" r="9" /><circle cx="50.5" cy="15" r="9" /></g>
+  <ellipse cx="32" cy="35.5" rx="24.5" ry="21.5" fill="var(--panda-face)" stroke="currentColor" stroke-width="3.2" />
+  <g fill="currentColor">
+    <ellipse cx="21.6" cy="34.6" rx="6.2" ry="8.6" transform="rotate(38 21.6 34.6)" />
+    <ellipse cx="42.4" cy="34.6" rx="6.2" ry="8.6" transform="rotate(-38 42.4 34.6)" />
+    <ellipse cx="32" cy="44.2" rx="3.7" ry="2.7" />
+  </g>
+  <g fill="var(--panda-face)"><circle cx="23.2" cy="32.6" r="2.1" /><circle cx="40.8" cy="32.6" r="2.1" /></g>
+  <path d="M28.6 48.6q3.4 2.6 6.8 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+  {bamboo && <g>
+    <path d="M35.5 50.5 61 39" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" />
+    <path d="M35.5 50.5 61 39" stroke="var(--panda-face)" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="0.01 7.2" />
+    <path d="M52 38.5q4-4 8.5-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+  </g>}
+</svg>

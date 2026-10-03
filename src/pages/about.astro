@@ -1,11 +1,99 @@
 ---
+import { ArrowUpRight } from '@lucide/astro';
 import Layout from '../layouts/Layout.astro';
 import ResponsiveImage from '../components/ResponsiveImage.astro';
-import { Content as ProfileDetails } from '../content/profile.md';
+import { education, experience, nationalAwards, patents, provincialAwards, publication, research, scholarships } from '../data/profile';
+import { site } from '../data/site';
 ---
-<Layout title="About" description="Calvin Diao is an engineer working across software, embedded systems, and hardware. Learn about his background and projects.">
-  <div class="shell about-page"><div class="about-heading"><div><a class="back-link" href="/">Back to the work</a><h1>Hi, I’m Calvin.</h1><p class="page-lead">An engineer who enjoys the whole path from a circuit board to the software running on it.</p></div><div class="about-portrait"><ResponsiveImage image="avatar.jpg" priority sizes="(max-width: 700px) 180px, 300px" /></div></div>
-  <div class="about-body"><div class="prose"><p>I describe myself as a tangible full-stack engineer. I enjoy designing electronics, bringing hardware to life with embedded software, and connecting it to larger software systems.</p><p>I contributed to Chromium through Google Summer of Code in 2025 and completed my M.Eng. in Computing and Software at McMaster. Previously, I worked at General Motors and Samsung’s R&D center.</p><p>Away from projects, I enjoy movies, working out, my home-theater setup, and time with my cat, Tandy.</p><a class="button primary" href="mailto:diaochenhao@gmail.com">Say hello</a></div>
-  <section class="experience"><h2>A few chapters.</h2><dl><div><dt>Chromium / GSoC</dt><dd>Open-source contributor <span>May–August 2025</span></dd></div><div><dt>General Motors</dt><dd>Software Engineer <span>September 2024–August 2025</span></dd></div><div><dt>Samsung R&D</dt><dd>Software Development Engineer <span>September 2022–December 2023</span></dd></div><div><dt>McMaster University</dt><dd>M.Eng., Computing and Software <span>January 2024–December 2025</span></dd></div></dl></section></div>
-  <details class="profile-details"><summary>Education, publications, and awards</summary><div class="prose"><ProfileDetails /></div></details></div>
+<Layout title="About" description="Calvin Diao: Chromium contributor, software engineer at General Motors and Samsung R&D, M.Eng. McMaster (GPA 4.00). Experience, education, patents and awards.">
+  <section class="page-hero stage about-hero" aria-labelledby="about-title">
+    <div class="shell about-hero-inner">
+      <div class="about-intro">
+        <p class="kicker">About</p>
+        <h1 id="about-title">Hi, I’m Calvin<span class="dot">.</span></h1>
+        <p class="page-lead">An engineer who enjoys the whole path from a circuit board to the software running on it.</p>
+        <div class="about-text">
+          <p>I like designing electronics, bringing hardware to life with embedded software, and connecting it to larger software systems.</p>
+          <p>I contributed to Chromium through Google Summer of Code in 2025 and completed my M.Eng. in Computing and Software at McMaster University. Before that, I worked as a software engineer at General Motors and at Samsung’s R&amp;D center.</p>
+          <p>Away from projects, I enjoy movies, working out, the home theater I built (a NAS and a projector), and time with my cat, Tandy.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="button primary" href={`mailto:${site.email}`}>Email me</a>
+          <a class="button" href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<ArrowUpRight size={16} aria-hidden="true" /></a>
+        </div>
+      </div>
+      <figure class="about-photo"><ResponsiveImage image="avatar.jpg" priority sizes="(max-width: 860px) 80vw, 400px" /></figure>
+    </div>
+  </section>
+
+  <div class="shell cv">
+    <section class="cv-section" aria-labelledby="experience-title">
+      <h2 id="experience-title">Experience</h2>
+      <ol class="cv-list">
+        {experience.map(item => (
+          <li>
+            <span class="cv-date">{item.dates}</span>
+            <div><strong>{item.org}</strong><p>{item.role}</p>{item.link && <a class="text-link" href={item.link.href} target="_blank" rel="noopener noreferrer">{item.link.label}<ArrowUpRight size={14} aria-hidden="true" /></a>}</div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="cv-section" aria-labelledby="education-title">
+      <h2 id="education-title">Education</h2>
+      <ol class="cv-list">
+        {education.map(item => (
+          <li>
+            <span class="cv-date">{item.dates}</span>
+            <div><strong>{item.school}</strong><p>{item.degree}</p><ul class="cv-notes">{item.notes.map(note => <li>{note}</li>)}</ul></div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="cv-section" aria-labelledby="research-title">
+      <h2 id="research-title">Research</h2>
+      <div>
+        <ol class="cv-list">
+          {research.map(item => (
+            <li>
+              <span class="cv-date">{item.dates}</span>
+              <div><strong>{item.project ? <a href={`/projects/${item.project}/`}>{item.title}</a> : item.title}</strong><p>{item.note}</p></div>
+            </li>
+          ))}
+        </ol>
+        <p class="citation"><span class="cv-label">Journal paper</span>{publication.authors} <cite>{publication.title}.</cite> {publication.venue} DOI: {publication.doi}</p>
+      </div>
+    </section>
+
+    <section class="cv-section" aria-labelledby="patents-title">
+      <h2 id="patents-title">Patents</h2>
+      <ol class="cv-list">
+        {patents.map(item => (
+          <li>
+            <span class="cv-date">{item.id || item.kind}</span>
+            <div><strong>{item.title}</strong><p>{item.id ? `${item.kind}. ` : ''}{item.authors}</p></div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="cv-section" aria-labelledby="awards-title">
+      <h2 id="awards-title">Scholarships and awards</h2>
+      <div class="awards">
+        <div class="award-group">
+          <h3 class="cv-label">Scholarships</h3>
+          <ul class="award-list">{scholarships.map(item => <li><strong>{item.name}, {item.year}</strong><span>{item.level}. {item.by}</span></li>)}</ul>
+        </div>
+        <div class="award-group">
+          <h3 class="cv-label">National competitions</h3>
+          <ul class="award-list">{nationalAwards.map(item => <li><strong>{item.result}</strong><span>{item.project ? <a href={`/projects/${item.project}/`}>{item.event}</a> : item.event}</span></li>)}</ul>
+        </div>
+        <div class="award-group award-group-wide">
+          <h3 class="cv-label">Provincial and regional competitions</h3>
+          <ul class="award-list award-list-columns">{provincialAwards.map(item => <li><strong>{item.result}</strong><span>{item.event}</span></li>)}</ul>
+        </div>
+      </div>
+    </section>
+  </div>
 </Layout>

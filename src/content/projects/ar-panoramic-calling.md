@@ -1,6 +1,5 @@
 ---
 title: AR panoramic calling
-shortTitle: AR Calling
 summary: Step into someone else's room through a live 360° video call.
 year: 2025
 order: 0
@@ -15,6 +14,21 @@ highlights:
 tools: [Unity, Android, Rokid, HLS]
 video: shrMtn-MXbk
 article: /ar-panoramic-calling/
+shortTitle: "AR calling"
+context: "M.Eng. project, McMaster University"
+badge: { label: "M.Eng. project", icon: "graduation" }
+system:
+  nodes:
+    - { kind: "Capture", title: "Insta360 X2", detail: "360° camera in the remote room" }
+    - { kind: "Cloud", title: "Live streaming platform", detail: "Ingest, transcode and CDN delivery; I set up its push and pull domains" }
+    - { kind: "App", title: "Unity calling app", detail: "AVPro decodes the stream onto the inside of a sphere", mine: true }
+    - { kind: "Display", title: "Rokid Air glasses", detail: "3DoF head tracking picks the view" }
+  links: ["RTMP push", "HLS pull", "stereo render"]
+specs:
+  - { parameter: "Call setup time", condition: "After tapping Call", value: "3–5", unit: "s" }
+  - { parameter: "Stream delay", condition: "HLS; cross-region routes add more", value: "2–5", unit: "s" }
+  - { parameter: "Playback frame rate", condition: "Rokid Air driven by a phone", value: "15–30", unit: "fps" }
+  - { parameter: "Heat and performance dips", condition: "Long sessions on phone-driven glasses", value: "~20", unit: "min" }
 ---
 
 A video call usually gives you a small, flat window into another place. For my M.Eng. project, I built a system that puts that place around you instead: a live panorama you can explore simply by moving your head.

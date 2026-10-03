@@ -1,6 +1,31 @@
 ---
 import { getCollection } from 'astro:content';
+import { ArrowRight } from '@lucide/astro';
 import Layout from '../../layouts/Layout.astro';
-const posts=(await getCollection('writing')).sort((a,b)=>b.data.date.localeCompare(a.data.date));
+const posts = (await getCollection('writing')).sort((a, b) => b.data.date.localeCompare(a.data.date));
+const projects = new Map((await getCollection('projects')).map(project => [project.id, project.data.title]));
+const format = (date: string) => new Date(`${date}T12:00:00Z`).toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
 ---
-<Layout title="Writing" description="Technical notes and original project write-ups by Calvin Diao."><div class="shell writing-page"><header class="page-heading"><h1>Behind the builds.</h1><p class="page-lead">The longer stories: decisions, implementation, and things I learned.</p></header><div class="writing-list">{posts.map(post=><a href={post.data.legacyPath}><time datetime={post.data.date}>{new Date(`${post.data.date}T12:00:00Z`).toLocaleDateString('en-CA',{year:'numeric',month:'short',timeZone:'UTC'})}</time><h2>{post.data.title}</h2><span>Read article</span></a>)}</div></div></Layout>
+<Layout title="Writing" description="Original technical write-ups by Calvin Diao: Chromium DNS errors, AR panoramic calling, wearable motion capture and two competition robots.">
+  <section class="page-hero stage" aria-labelledby="writing-title">
+    <div class="shell page-hero-inner">
+      <p class="kicker">Writing</p>
+      <h1 id="writing-title">Behind the builds<span class="dot">.</span></h1>
+      <p class="page-lead">The long versions: design decisions, implementation details and what I learned. Each one is the original write-up from my blog.</p>
+    </div>
+  </section>
+  <div class="shell writing">
+    <ol class="post-list">
+      {posts.map(post => (
+        <li>
+          <a href={post.data.legacyPath}>
+            <time datetime={post.data.date}>{format(post.data.date)}</time>
+            <span class="post-title">{post.data.title}</span>
+            <span class="post-project">{post.data.project ? projects.get(post.data.project) : 'First blog post'}</span>
+            <ArrowRight class="post-arrow" size={18} aria-hidden="true" />
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+</Layout>

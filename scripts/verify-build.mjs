@@ -32,4 +32,15 @@ assert.ok((await fs.stat(path.join(root,hero.src))).size<=250*1024,'Main AR imag
 assert.match(await fs.readFile(path.join(root,'robots.txt'),'utf8'),/Disallow: \//);
 assert.match(await fs.readFile(path.join(root,'_headers'),'utf8'),/X-Robots-Tag: noindex, nofollow/);
 await fs.access(path.join(root,'sitemap-index.xml'));
-console.log(`Verified ${htmlFiles.length} pages, ${imageCount} image references, all legacy URLs, preview noindex, sitemap, and hero image budget.`);
+const home=await fs.readFile(path.join(root,'index.html'),'utf8');
+assert.equal(home.match(/<article class="card /g)?.length,5,'The home page needs one card per project');
+assert.match(home,/class="hero stage"/,'The home page opens on the hero');
+for(const slug of ['ar-panoramic-calling','gsoc','wearable-rehab-mocap','smart-car-2021','smart-car-2020']){
+  assert.match(home,new RegExp(`href="/projects/${slug}/"`),`The home page must link to ${slug}`);
+  const page=await fs.readFile(path.join(root,'projects',slug,'index.html'),'utf8');
+  assert.match(page,/class="flow"/,`${slug} needs its block diagram`);
+  assert.match(page,/class="facts"/,`${slug} needs its key facts`);
+}
+for(const asset of ['share.png','favicon.svg','media/apple-touch-icon.png'])await fs.access(path.join(root,asset));
+assert.ok((await fs.stat(path.join(root,'share.png'))).size<=300*1024,'Share image must stay below 300 KB');
+console.log(`Verified ${htmlFiles.length} pages, ${imageCount} image references, all legacy URLs, preview noindex, sitemap, project cards, project diagrams, share image, and hero image budget.`);

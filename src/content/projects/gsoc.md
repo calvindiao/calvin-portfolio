@@ -1,6 +1,5 @@
 ---
 title: Structured DNS errors in Chromium
-shortTitle: Chromium
 summary: Help a browser distinguish a blocked domain from a broken connection.
 year: 2025
 order: 1
@@ -16,6 +15,22 @@ tools: [C++, Chromium, DNS, GSoC]
 contributions: https://chromium-review.googlesource.com/q/owner:diaochenhao@gmail.com
 code: https://chromium-review.googlesource.com/c/chromium/src/+/6707102
 article: /gsoc/
+shortTitle: "Chromium DNS"
+context: "Google Summer of Code 2025"
+badge: { label: "Google Summer of Code", icon: "code" }
+system:
+  nodes:
+    - { kind: "Resolver", title: "Public DNS resolver", detail: "Blocks a domain and attaches an Extended DNS Error" }
+    - { kind: "Parser", title: "EdeOpt parser", detail: "Reads the JSON in EXTRA-TEXT with strict UTF-8 checks", mine: true }
+    - { kind: "Data", title: "FilteringDetails", detail: "ro: resolver operator, inc: incident ID", mine: true }
+    - { kind: "Utility", title: "URL generator", detail: "Maps ro to a URI template and expands {inc}", mine: true }
+  links: ["EDE option", "parsed", "lookup"]
+  note: "Everything runs behind the kDnsFilteringDetails feature flag, off by default."
+specs:
+  - { parameter: "Change lists", condition: "2 main + 1 follow-up, in Chromium’s Gerrit", value: "3" }
+  - { parameter: "Parsed fields", condition: "draft-nottingham-public-resolver-errors-01", value: "ro, inc" }
+  - { parameter: "Feature flag", condition: "kDnsFilteringDetails", value: "Off by default" }
+  - { parameter: "Test suite", condition: "Positive, negative and flag-off cases", value: "net_unittests" }
 ---
 
 When a public DNS resolver blocks a domain, a browser may only see a failed lookup. During Google Summer of Code 2025, I worked on the foundation for carrying a more useful explanation into Chromium's DNS stack.

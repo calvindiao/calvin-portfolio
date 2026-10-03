@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Maximize2, Play } from '@lucide/astro';
+import ResponsiveImage from './ResponsiveImage.astro';
+import ChromiumFigure from './ChromiumFigure.astro';
+import { getImage } from '../data/images';
+interface Props { project: CollectionEntry<'projects'>; priority?: boolean; sizes?: string; class?: string; }
+const { project, priority = false, sizes = '(max-width: 900px) 92vw, 58vw', class: className } = Astro.props;
+const { cover, coverAlt, video, title } = project.data;
+const isDiagram = cover === 'chromium-flow';
+---
+<figure class:list={['media', className]}>
+  <div class:list={['media-frame', { 'media-diagram': isDiagram }]} data-video={video} data-video-title={`${title} demo`}>
+    {isDiagram ? <ChromiumFigure /> : <ResponsiveImage image={cover} alt={coverAlt} priority={priority} sizes={sizes} />}
+    {!isDiagram && <button class="media-expand js-only" type="button" data-image={getImage(cover).src} data-alt={coverAlt} aria-label={`Enlarge image: ${coverAlt}`}><Maximize2 size={16} aria-hidden="true" /></button>}
+    {video && <button class="media-play js-only" type="button" data-watch aria-label={`Watch the ${title} demo`}><span class="media-play-icon"><Play size={20} fill="currentColor" aria-hidden="true" /></span><span>Watch the demo</span></button>}
+  </div>
+  <figcaption class="media-caption">{isDiagram ? 'How resolver error details flow into Chromium. An illustration, not a shipped browser screen.' : coverAlt}{video && <> · <a href={`https://www.youtube.com/watch?v=${video}`} target="_blank" rel="noopener noreferrer">Video on YouTube</a></>}</figcaption>
+</figure>
