@@ -1,6 +1,6 @@
 # Calvin Diao's portfolio
 
-Calvin's portfolio, built for the few seconds a recruiter gives it. The site is light and says little: the home page has a short hero (name, one-line role, photo, four credentials), five project cards (picture, credential badge, title, one sentence), and contact. Each card opens a project page with the demo video, key facts, what Calvin built in two short paragraphs, how it works, and photos. Built with Astro and TypeScript. The original technical articles remain available at their existing URLs.
+Calvin's portfolio, built for the few seconds a recruiter gives it. The site is light and says little: the home page has a short hero (portrait, name, one-line role, four credentials), five project cards (picture, title, one sentence, credential), and contact. Each card opens a project page with the demo video, key facts, what Calvin built in two short paragraphs, how it works, and photos. Built with Astro and TypeScript. The original technical articles remain available at their existing URLs.
 
 ## Local development
 
@@ -23,13 +23,14 @@ The build verification checks all page references, image attributes, original ar
 
 ## Content
 
-- `src/content/projects/`: one file per project. Besides the cover, gallery, highlights and demo links, each has a `badge` (the credential on its home page card, with an icon), a `context` line, a `system` chain for "How it works" (nodes and arrow labels; `mine: true` marks Calvin's blocks) and four `specs` for the key facts. `order` sets the card order; the first two cards are large.
+- `src/content/projects/`: one file per project. Besides the cover, gallery, highlights and demo links, each has a `badge` (the credential shown in plain text on its home page card), a `context` line, a `system` chain for "How it works" (nodes and arrow labels; `mine: true` marks Calvin's blocks) and four `specs` for the key facts. `order` sets the card order; the first two cards are large.
 - `src/content/writing/`: original Markdown articles and their historical routes.
 - `src/data/site.ts`: email, links, and the four credentials under the hero.
 - `src/data/profile.ts`: experience, education, research, patents, and awards for the About page.
 - `src/assets-originals/`: project photos and diagrams; edit originals here, not generated output. `mocap/pose-pairs.jpg` is a landscape recomposition of `mocap/prototype.png`.
 - `public/share.png`: the 1200 × 630 link-preview image, rendered from the home page hero. Re-render it when the hero changes.
-- `public/favicon.svg`: the panda on the orange brand square; the home-screen icon is rasterized from it.
+- `public/favicon.svg`: a "CD" monogram on a near-black square; the home-screen icon is rasterized from it.
+- `src/assets-originals/portrait.jpg`: the hero portrait, a head-and-shoulders crop of `avatar.jpg`.
 
 The source material was migrated from [calvindiao/Blog](https://github.com/calvindiao/Blog), revision `77acb907958fe4a2a18a854d96f6c7dbbd2ccbfb`. No private project repositories or new personal claims were imported. The Chromium cover is an illustration with example values, not a screenshot of a shipped browser feature.
 
@@ -60,7 +61,7 @@ At 390, 768, 1024, and 1440 px: check layout overflow, that the hero's credentia
 
 ## Design resources
 
-The concept, page structure, tokens and references are documented in [docs/design.md](docs/design.md). The site uses locally hosted Archivo (Martian Mono only inside the Chromium illustration and code) and Lucide SVG icons; the hero's entrance animation is plain CSS. Project photos come from the original blog, and the panda mark is redrawn from the techliker.com favicon.
+The concept, page structure, tokens and references are documented in [docs/design.md](docs/design.md). The site uses locally hosted Inter (Martian Mono only inside the Chromium illustration and code) and Lucide SVG icons; the hero's entrance animation is plain CSS. Project photos and the portrait come from the original blog.
 
 ## Content license
 

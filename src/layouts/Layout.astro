@@ -1,10 +1,8 @@
 ---
-import '@fontsource-variable/archivo/standard.css';
+import '@fontsource-variable/inter/wght.css';
 import '@fontsource-variable/martian-mono/standard.css';
-import archivoLatin from '@fontsource-variable/archivo/files/archivo-latin-standard-normal.woff2?url';
-import martianLatin from '@fontsource-variable/martian-mono/files/martian-mono-latin-standard-normal.woff2?url';
+import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import { ArrowUpRight, Copy, X } from '@lucide/astro';
-import Panda from '../components/Panda.astro';
 import { site } from '../data/site';
 import '../styles/global.css';
 interface Props { title?: string; description?: string; image?: string; }
@@ -23,22 +21,21 @@ const year = new Date().getUTCFullYear();
 <html lang="en">
   <head>
     <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#FAF9F6" />
+    <meta name="theme-color" content="#FAFAF9" />
     <meta name="robots" content="noindex, nofollow" />
     <title>{pageTitle}</title><meta name="description" content={description} /><link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" /><meta property="og:title" content={pageTitle} /><meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} /><meta property="og:image" content={new URL(image, Astro.site)} /><meta property="og:site_name" content="Calvin Diao" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" /><link rel="apple-touch-icon" href="/media/apple-touch-icon.png" />
-    <link rel="preload" href={archivoLatin} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={martianLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
     <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="masthead">
       <div class="shell masthead-row">
-        <a class="brand" href="/" aria-label="Calvin Diao, home"><span class="brand-mark"><Panda bamboo={false} /></span><span class="brand-name">Calvin Diao</span></a>
+        <a class="brand" href="/" aria-label="Calvin Diao, home">Calvin Diao</a>
         <nav class="nav" aria-label="Main">
           {nav.map(item => <a href={item.href} class:list={{ 'nav-optional': item.optional }} aria-current={item.active ? 'page' : undefined}>{item.label}</a>)}
           <a class="nav-cta" href="#contact">Contact</a>
@@ -47,27 +44,25 @@ const year = new Date().getUTCFullYear();
     </header>
     <main id="main"><slot /></main>
     <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div class="shell">
-        <div class="contact-panel">
-          <h2 id="contact-title">Let’s talk<span class="dot">.</span></h2>
-          <div class="contact-reach">
-            <div class="contact-email">
-              <a href={`mailto:${site.email}`}>{site.email}</a>
-              <button class="button copy-button js-only" type="button" data-copy={site.email}><Copy size={15} aria-hidden="true" /><span data-copy-label>Copy</span></button>
-            </div>
-            <ul class="contact-links">
-              <li><a href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<ArrowUpRight size={14} aria-hidden="true" /></a></li>
-              <li><a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub<ArrowUpRight size={14} aria-hidden="true" /></a></li>
-              <li><a href={site.links.youtube} target="_blank" rel="noopener noreferrer">YouTube<ArrowUpRight size={14} aria-hidden="true" /></a></li>
-              <li><a href={site.links.chromium} target="_blank" rel="noopener noreferrer">Chromium code reviews<ArrowUpRight size={14} aria-hidden="true" /></a></li>
-            </ul>
+      <div class="shell contact-inner">
+        <h2 id="contact-title">Contact</h2>
+        <div class="contact-body">
+          <div class="contact-email">
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+            <button class="button copy-button js-only" type="button" data-copy={site.email}><Copy size={14} aria-hidden="true" /><span data-copy-label>Copy</span></button>
           </div>
+          <ul class="contact-links">
+            <li><a href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<ArrowUpRight size={14} aria-hidden="true" /></a></li>
+            <li><a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub<ArrowUpRight size={14} aria-hidden="true" /></a></li>
+            <li><a href={site.links.youtube} target="_blank" rel="noopener noreferrer">YouTube<ArrowUpRight size={14} aria-hidden="true" /></a></li>
+            <li><a href={site.links.chromium} target="_blank" rel="noopener noreferrer">Chromium code reviews<ArrowUpRight size={14} aria-hidden="true" /></a></li>
+          </ul>
         </div>
       </div>
     </section>
     <footer class="footer">
       <div class="shell footer-row">
-        <p class="footer-mark"><span class="brand-mark"><Panda bamboo={false} /></span><span>© {year} Calvin Diao. Coding is a game.</span></p>
+        <p>© {year} Calvin Diao</p>
         <ul class="footer-nav">
           <li><a href="/#projects">Projects</a></li>
           <li><a href="/about/">About</a></li>

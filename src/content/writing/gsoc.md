@@ -11,11 +11,11 @@ During Google Summer of Code (GSoC) 2025, I worked on bringing **Public Resolver
 
 
 
-## 🤔 Why PRE matters
+## Why PRE matters
 
 Modern public DNS resolvers may be required to block certain domains. Without a structured signal, clients often treat these failures as network instability. PRE provides a standards-driven way to attach **machine-readable metadata** (and resolver-provided links) so browser can distinguish “blocked” from “broken”.
 
-## 🎯 Project goals
+## Project goals
 
 - Parse PRE’s structured JSON object from the **EDE “extra text”** field
 - Extract key fields defined by [`draft-nottingham-public-resolver-errors-01`](https://datatracker.ietf.org/doc/draft-nottingham-public-resolver-errors/01/):
@@ -25,7 +25,7 @@ Modern public DNS resolvers may be required to block certain domains. Without a 
 - Add robust unit tests (correctness + edge cases)
 - Integrate behind a feature flag
 
-## 🙋 What I implemented
+## What I implemented
 
 ### 1) PRE parsing in `OptRecordRdata::EdeOpt`
 
@@ -70,7 +70,7 @@ I added comprehensive tests covering:
 Separately, I prepared work to request **EDE on all DNS request types** and validated behavior using a resolver that supports EDE (AdGuard DNS).  
 I also reviewed where EDE fields surface in NetLog to understand current observability and what remains to wire end-to-end.
 
-## 🔗 Links
+## Links
 
 **Main Gerrit CLs (PRE parsing + generator):**
 

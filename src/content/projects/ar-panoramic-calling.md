@@ -16,7 +16,7 @@ video: shrMtn-MXbk
 article: /ar-panoramic-calling/
 shortTitle: "AR calling"
 context: "M.Eng. project, McMaster University"
-badge: { label: "M.Eng. project", icon: "graduation" }
+badge: "M.Eng. project"
 system:
   nodes:
     - { kind: "Capture", title: "Insta360 X2", detail: "360° camera in the remote room" }

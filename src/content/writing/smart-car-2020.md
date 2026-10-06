@@ -17,7 +17,7 @@ The project integrated multiple hardware and software technologies, covering **s
 
 ---
 
-### 🧠 Software Development
+### Software Development
 
 - Implemented a multi-modal perception and control system, including **PID closed-loop control** and **Kalman filtering** for optimized attitude estimation and speed control.  
 - Developed the main control logic in **C/C++**, supporting real-time algorithm debugging and optimization.  
@@ -27,7 +27,7 @@ The project integrated multiple hardware and software technologies, covering **s
 
 ---
 
-### ⚙️ Hardware and Mechanical Design
+### Hardware and Mechanical Design
 
 - Completed the **mechanical structure design and modeling** of the entire vehicle, optimizing Mecanum wheel drive and chassis stability.  
 - Designed **multi-layer PCB boards** integrating a **minimal MCU control unit**, **MOSFET driver circuits**, and **multi-channel power management modules**.  
@@ -36,7 +36,7 @@ The project integrated multiple hardware and software technologies, covering **s
 
 ---
 
-### 💡 Competition-winning Features
+### Competition-winning Features
 
 - The system employed **Dual MCU parallel computation**. One was dedicated to **vehicle control** and the other to **signal acquisition and processing**.  This separation significantly improved **system responsiveness** and **computational efficiency**.
 - We dedicated and integrated a specialized **8-bit parallel ADC chip** for high-speed, high-precision data sampling, substantially improving signal accuracy compared to serial ADC solutions.
@@ -44,7 +44,7 @@ The project integrated multiple hardware and software technologies, covering **s
 
 ---
 
-### 📸 Project Gallery
+### Project Gallery
 
 <p align="center">
   <img src="/assets/2020/20200609_223638.jpg" width="70%">
@@ -61,7 +61,7 @@ The project integrated multiple hardware and software technologies, covering **s
 
 ---
 
-### 🎥 Competition Video
+### Competition Video
 
 <div class="article-demo" data-video="9fxU5Fqx_os" data-video-title="National Finals Video"><button class="button primary" data-watch>Watch demo</button><a href="https://www.youtube.com/watch?v=9fxU5Fqx_os" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>
 
@@ -71,7 +71,7 @@ The project integrated multiple hardware and software technologies, covering **s
 
 
 
-### 🏅 Team & Awards
+### Team & Awards
 
 <p align="center">
   <img src="/assets/2020/1598536641490.jpeg" width="70%">
@@ -86,7 +86,7 @@ The project integrated multiple hardware and software technologies, covering **s
   <img src="/assets/2020/15th%20smart%20vehicle%20second%20national%20Prize.jpg" width="30%">
 </p>
 <p align="center">
-  <em>🏆 First Prize in East China and National Second Prize Certificates 🏆</em>
+  <em>First Prize in East China and National Second Prize Certificates</em>
 </p>
 
 

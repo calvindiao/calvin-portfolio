@@ -1,5 +1,5 @@
 ---
-title: A robot that follows sound
+title: Sound-tracking robot
 summary: Find an acoustic beacon and drive toward it using a microphone array.
 year: 2020
 order: 4
@@ -16,7 +16,7 @@ video: 9fxU5Fqx_os
 article: /smart-car-2020/
 shortTitle: "Sound-following robot"
 context: "Team project, 15th National Smart Car Competition"
-badge: { label: "National 2nd Prize", icon: "trophy" }
+badge: "National 2nd Prize"
 system:
   nodes:
     - { kind: "Listen", title: "Microphone array", detail: "Hears the acoustic beacon" }

@@ -29,7 +29,8 @@ const descriptions = {
   '2020/20200925_143817.jpg': 'Overhead view of a Mecanum-wheeled acoustic beacon tracking robot',
   '2020/20200609_223638.jpg': 'Early prototype of the acoustic localization robot',
   'gsoc/certificate.png': 'Google Summer of Code 2025 completion certificate for Chenhao Diao',
-  'avatar.jpg': 'Calvin Diao crouching in a park to feed a deer'
+  'avatar.jpg': 'Calvin Diao crouching in a park to feed a deer',
+  'portrait.jpg': 'Portrait of Calvin Diao'
 };
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -57,6 +58,6 @@ for (const file of await walk(original)) {
   manifest[key]={...largest,srcSet:versions.map(v=>`${v.src} ${v.width}w`).join(', '),alt:descriptions[key] || (key.includes('team') || key.includes('159853') ? 'Project team at the smart car competition' : 'Smart car competition award certificate')};
 }
 await fs.writeFile(path.join(root,'src/generated/images.json'),JSON.stringify(manifest,null,2)+'\n');
-// The home-screen icon is the panda favicon, rasterized.
+// The home-screen icon is the monogram favicon, rasterized.
 await sharp(await fs.readFile(path.join(root,'public/favicon.svg'))).resize(180,180).png().toFile(path.join(output,'apple-touch-icon.png'));
 console.log(`Prepared ${Object.keys(manifest).length} responsive image entries.`);

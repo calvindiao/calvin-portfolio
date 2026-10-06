@@ -16,7 +16,7 @@ video: eKBgN3s-vVk
 article: /wearable-rehab-mocap/
 shortTitle: "Motion capture"
 context: "Undergraduate thesis, Best Thesis award"
-badge: { label: "Best Thesis award", icon: "award" }
+badge: "Best Thesis award"
 system:
   nodes:
     - { kind: "Sense", title: "IMU sensor nodes", detail: "Two STM32L071 nodes fuse 9-axis data with a quaternion Kalman filter", mine: true }

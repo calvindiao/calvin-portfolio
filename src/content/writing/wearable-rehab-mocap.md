@@ -13,11 +13,11 @@ I built a  **high-precision wearable motion capture & rehabilitation assessment 
 
 
 
-The system integrates multiple **hardware** and **software** technologies, covering **multi-IMU sensing**, **quaternion-based Kalman fusion**, **wireless streaming with UART interfacing**, and a **PC-side inverse kinematics (IK) evaluation tool** (MATLAB + OpenSim) to visualize motion and quantify joint **ROM (Range of Motion)**. The goal was simple: make rehab feedback **more objective, more accessible, and easier to use**. 🦾
+The system integrates multiple **hardware** and **software** technologies, covering **multi-IMU sensing**, **quaternion-based Kalman fusion**, **wireless streaming with UART interfacing**, and a **PC-side inverse kinematics (IK) evaluation tool** (MATLAB + OpenSim) to visualize motion and quantify joint **ROM (Range of Motion)**. The goal was simple: make rehab feedback **more objective, more accessible, and easier to use**.
 
 ---
 
-### 🧩 System Overview
+### System Overview
 
 **Workflow: Capture → Fusion → Transmit/Store → IK Analysis → Rehab Metrics**
 
@@ -28,7 +28,7 @@ The system integrates multiple **hardware** and **software** technologies, cover
 
 ---
 
-### 🧠 Software Development
+### Software Development
 
 <p align="center">
   <img src="/assets/mocap/Kalman filter.png" width="70%">
@@ -43,7 +43,7 @@ The system integrates multiple **hardware** and **software** technologies, cover
 
 ---
 
-### ⚙️ Hardware and Mechanical Design
+### Hardware and Mechanical Design
 
 <p align="center">
   <img src="/assets/mocap/hardware workflow.png" width="70%">
@@ -67,7 +67,7 @@ The system integrates multiple **hardware** and **software** technologies, cover
 
 ---
 
-### 💡  Key Innovations
+### Key Innovations
 
 - The system achieves an average knee joint angle measurement error of only **3°** through rigorous static and dynamic testing, meeting high accuracy. 
 - **Inverse Kinematics Integration**: Unlike simple angle measurement devices, this system utilizes motion capture data for inversion. This provides doctors with clinically relevant **Range of Motion (ROM)** data for remote diagnosis. 
@@ -75,7 +75,7 @@ The system integrates multiple **hardware** and **software** technologies, cover
 
 ---
 
-### 📸 Project Gallery
+### Project Gallery
 
 <p align="center">
   <img src="/assets/mocap/prototype.png" width="65%">
@@ -107,7 +107,7 @@ The system integrates multiple **hardware** and **software** technologies, cover
 
 ---
 
-### 🎥 Competition Video
+### Competition Video
 
 <div class="article-demo" data-video="eKBgN3s-vVk" data-video-title="Wearable Motion Capture Demo Video"><button class="button primary" data-watch>Watch demo</button><a href="https://www.youtube.com/watch?v=eKBgN3s-vVk" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>
 

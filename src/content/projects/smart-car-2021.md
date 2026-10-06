@@ -1,5 +1,5 @@
 ---
-title: A motorcycle that balances itself
+title: Self-balancing motorcycle
 summary: Keep a two-wheeled robot upright while it follows an electromagnetic track.
 year: 2021
 order: 3
@@ -16,7 +16,7 @@ video: M-G5Jj6L29o
 article: /smart-car-2021/
 shortTitle: "Balancing motorcycle"
 context: "Team project, 16th National Smart Car Competition"
-badge: { label: "National 2nd Prize", icon: "trophy" }
+badge: "National 2nd Prize"
 system:
   nodes:
     - { kind: "Sense", title: "Magnetic sensors + IMU", detail: "Custom sensors read the electromagnetic track" }

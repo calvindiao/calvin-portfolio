@@ -11,7 +11,7 @@ const projects = defineCollection({
     cover: z.string(), coverAlt: z.string(), gallery: z.array(z.string()),
     highlights: z.array(z.string()).max(3), tools: z.array(z.string()),
     // Shown on the home page card: the one credential a recruiter should see first.
-    badge: z.object({ label: z.string(), icon: z.enum(['trophy', 'award', 'graduation', 'code']) }),
+    badge: z.string(),
     // A left-to-right signal chain. links[i] labels the arrow from nodes[i] to nodes[i + 1].
     system: z.object({ nodes: z.array(node).min(2), links: z.array(z.string()), note: z.string().optional() })
       .refine(system => system.links.length === system.nodes.length - 1, 'system.links needs one label per arrow'),

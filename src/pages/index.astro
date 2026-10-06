@@ -4,7 +4,6 @@ import { ArrowDown, ArrowRight, ArrowUpRight } from '@lucide/astro';
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ResponsiveImage from '../components/ResponsiveImage.astro';
-import Panda from '../components/Panda.astro';
 import { credentials, site } from '../data/site';
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
@@ -12,31 +11,28 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   <section class="hero" aria-labelledby="hero-title">
     <div class="shell hero-inner">
       <div class="hero-copy">
-        <h1 id="hero-title">Calvin Diao<span class="dot">.</span></h1>
-        <p class="hero-role">Software engineer, from <strong>circuit boards</strong> to <strong>Chromium</strong>.</p>
+        <div class="avatar"><ResponsiveImage image="portrait.jpg" priority sizes="84px" /></div>
+        <h1 id="hero-title">Calvin Diao</h1>
+        <p class="hero-role">Software engineer, from circuit boards to Chromium.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#projects">See my projects<ArrowDown size={17} aria-hidden="true" /></a>
-          <a class="button" href={`mailto:${site.email}`}>Email me</a>
+          <a class="button primary" href="#projects">View projects<ArrowDown size={16} aria-hidden="true" /></a>
+          <a class="button" href={`mailto:${site.email}`}>Email</a>
           <ul class="hero-links">
             <li><a href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<ArrowUpRight size={14} aria-hidden="true" /></a></li>
             <li><a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub<ArrowUpRight size={14} aria-hidden="true" /></a></li>
           </ul>
         </div>
       </div>
-      <figure class="hero-photo">
-        <div class="hero-photo-frame"><ResponsiveImage image="avatar.jpg" priority sizes="(max-width: 860px) 92vw, 360px" /></div>
-        <p class="sticker"><Panda bamboo={false} /><span>Coding is a game.</span></p>
-      </figure>
       <ul class="creds" aria-label="Experience and education">
-        {credentials.map(item => <li><strong>{item.org}</strong><span>{item.detail}</span><span class="creds-years">{item.years}</span></li>)}
+        {credentials.map(item => <li><strong>{item.org}</strong><span class="creds-years">{item.years}</span><span class="creds-detail">{item.detail}</span></li>)}
       </ul>
     </div>
   </section>
 
   <section class="shell projects" id="projects" aria-labelledby="projects-title">
     <header class="section-head">
-      <h2 id="projects-title">Things I’ve built</h2>
-      <a class="text-link" href="/writing/">Full write-ups<ArrowRight size={16} aria-hidden="true" /></a>
+      <h2 id="projects-title">Selected projects</h2>
+      <a class="text-link" href="/writing/">All write-ups<ArrowRight size={15} aria-hidden="true" /></a>
     </header>
     <div class="cards">
       {projects.map((project, index) => <ProjectCard project={project} size={index < 2 ? 'large' : 'small'} />)}

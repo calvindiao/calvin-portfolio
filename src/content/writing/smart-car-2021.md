@@ -17,7 +17,7 @@ This project integrated a wide range of hardware and software technologies, incl
 
 ---
 
-### 🧠 Software Development
+### Software Development
 
 - Implemented a **Kalman filtering algorithm** to estimate the motorcycle’s accurate tilt angle and attitude based on **IMU sensor fusion**.
 
@@ -29,7 +29,7 @@ This project integrated a wide range of hardware and software technologies, incl
 
 ---
 
-### ⚙️ Hardware and Mechanical Design
+### Hardware and Mechanical Design
 
 - Completed the **mechanical structure design** and **3D modeling** of the vehicle, optimizing the self-balancing mechanism for a lightweight and compact structure. (See Below Picture)
 - Designed **multi-layer PCB boards** integrating a **minimal MCU control unit**, **MOSFET driver circuits**, and **multi-channel power management modules**.  
@@ -37,7 +37,7 @@ This project integrated a wide range of hardware and software technologies, incl
 
 ---
 
-### 💡 Competition-winning Features
+### Competition-winning Features
 
 - Achieved an elegant and stable mechanical design, where precise weight distribution and a refined self-balancing structure significantly reduced the load of the balance control algorithm.
 
@@ -47,7 +47,7 @@ This project integrated a wide range of hardware and software technologies, incl
 
 ---
 
-### 📸 Project Gallery
+### Project Gallery
 
 <p align="center">
   <img src="/assets/2021/20210824_190540.jpg" width="80%">
@@ -61,7 +61,7 @@ This project integrated a wide range of hardware and software technologies, incl
 
 ---
 
-### 🎥 Competition Video
+### Competition Video
 
 <div class="article-demo" data-video="M-G5Jj6L29o" data-video-title="National Finals Video"><button class="button primary" data-watch>Watch demo</button><a href="https://www.youtube.com/watch?v=M-G5Jj6L29o" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>
 
@@ -71,7 +71,7 @@ This project integrated a wide range of hardware and software technologies, incl
 
 
 
-### 🏅 Team & Awards
+### Team & Awards
 
 <p align="center">
   <img src="/assets/2021/team photo.jpg" width="70%">
@@ -86,7 +86,7 @@ This project integrated a wide range of hardware and software technologies, incl
   <img src="/assets/2021/sixteenth First Prize in China.jpg" width="30%">
 </p>
 <p align="center">
-  <em>🏆 First Prize in East China and National Second Prize Certificates 🏆</em>
+  <em>First Prize in East China and National Second Prize Certificates</em>
 </p>
 
 

@@ -17,7 +17,7 @@ code: https://chromium-review.googlesource.com/c/chromium/src/+/6707102
 article: /gsoc/
 shortTitle: "Chromium DNS"
 context: "Google Summer of Code 2025"
-badge: { label: "Google Summer of Code", icon: "code" }
+badge: "Google Summer of Code"
 system:
   nodes:
     - { kind: "Resolver", title: "Public DNS resolver", detail: "Blocks a domain and attaches an Extended DNS Error" }
