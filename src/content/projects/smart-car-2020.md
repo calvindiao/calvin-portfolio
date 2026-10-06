@@ -31,12 +31,6 @@ specs:
   - { parameter: "Sampling", condition: "Microphone array", value: "8-bit parallel ADC" }
 ---
 
-This competition robot listens before it moves. A microphone array detects an acoustic beacon, and a Mecanum-wheeled chassis drives toward the source while correcting its position.
+This competition robot listens before it moves: a microphone array finds an acoustic beacon, and a Mecanum-wheeled chassis drives toward it. One microcontroller samples and processes the audio; the other drives the vehicle with PID control and sensor fusion.
 
-The project brought together signal processing, embedded software, electronics, and mechanical design. I worked on FFT and cross-correlation methods for sound localization, control software in C/C++, and perception with an OpenMV module. PID control and sensor fusion supported the vehicle's movement and attitude estimation.
-
-We split the work between two microcontrollers: one handles signal acquisition and processing, while the other controls the vehicle. A parallel ADC supports the acquisition path. The electronics include custom PCBs, motor drivers, and power management, with attention to signal shielding and protection.
-
-Mechanical work included chassis modeling and optimization of the Mecanum-wheel arrangement. The final system combined sensing, processing, and actuation in a working vehicle that competed on a real course.
-
-Our team received a National Second Prize at the 15th National Smart Car Competition. The finals video shows the robot in action; the original article includes prototype photos and award records.
+I worked on sound localization with FFT and cross-correlation, the C/C++ control software and OpenMV perception. The team also built the custom PCBs and optimized the chassis.

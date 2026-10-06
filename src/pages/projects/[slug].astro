@@ -19,14 +19,14 @@ const { Content } = await render(project);
 const data = project.data;
 ---
 <Layout title={data.title} description={`${data.summary} ${data.context}.`} image={data.cover === 'chromium-flow' ? '/share.png' : getImage(data.cover).src}>
-  <section class="page-hero stage project-hero" aria-labelledby="project-title">
-    <div class="shell project-hero-inner">
+  <section class="page-hero" aria-labelledby="project-title">
+    <div class="shell page-hero-inner">
       <a class="back-link" href="/#projects"><ArrowLeft size={16} aria-hidden="true" />All projects</a>
       <p class="kicker">{!data.context.includes(String(data.year)) && <span>{data.year}</span>}<span>{data.context}</span></p>
       <h1 id="project-title">{data.title}</h1>
       <p class="page-lead">{data.summary}</p>
-      <Media class="project-media" project={project} priority sizes="(max-width: 1100px) 94vw, 1040px" />
     </div>
+    <div class="shell"><Media class="project-media" project={project} priority sizes="(max-width: 1100px) 94vw, 1160px" /></div>
   </section>
 
   <div class="shell project">

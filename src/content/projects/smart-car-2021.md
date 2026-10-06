@@ -31,10 +31,6 @@ specs:
   - { parameter: "Interfaces", condition: "Sensors and peripherals", value: "I²C, UART, SPI, DMA" }
 ---
 
-For our second year in the National Smart Car Competition, we built a self-balancing electric motorcycle. It follows an electromagnetic track using custom magnetic sensors and stays upright through real-time control, without a stabilizing flywheel.
+Our second Smart Car Competition entry: an electric motorcycle that follows an electromagnetic track and stays upright through real-time control alone, with no flywheel. Steering changes balance and balance changes steering, so I fused IMU data with a Kalman filter and used fuzzy PID to handle the coupling, in C/C++.
 
-The challenge connects mechanics and software: steering changes balance, balance changes steering, and the controller must respond while the vehicle is moving. I developed C/C++ control software, fused IMU measurements with Kalman filtering, and used fuzzy PID control to handle the coupling between tilt and steering.
-
-The physical design mattered just as much. I worked on the mechanical structure and 3D modeling, designed the circuit boards and power electronics, and separated analog sensing from digital processing to reduce interference. A compact PCB and careful weight distribution helped keep the vehicle manageable for the controller.
-
-Our project received a National Second Prize at the 16th National Smart Car Competition. The competition video shows the completed vehicle on the track. The gallery and original write-up document the mechanical assembly, electronics, and team results behind that run.
+I also worked on the mechanical structure and designed the circuit boards and power electronics, keeping analog sensing apart from digital processing to reduce interference.

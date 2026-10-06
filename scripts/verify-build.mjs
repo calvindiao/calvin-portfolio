@@ -34,7 +34,7 @@ assert.match(await fs.readFile(path.join(root,'_headers'),'utf8'),/X-Robots-Tag:
 await fs.access(path.join(root,'sitemap-index.xml'));
 const home=await fs.readFile(path.join(root,'index.html'),'utf8');
 assert.equal(home.match(/<article class="card /g)?.length,5,'The home page needs one card per project');
-assert.match(home,/class="hero stage"/,'The home page opens on the hero');
+assert.match(home,/class="hero"/,'The home page opens on the hero');
 for(const slug of ['ar-panoramic-calling','gsoc','wearable-rehab-mocap','smart-car-2021','smart-car-2020']){
   assert.match(home,new RegExp(`href="/projects/${slug}/"`),`The home page must link to ${slug}`);
   const page=await fs.readFile(path.join(root,'projects',slug,'index.html'),'utf8');

@@ -3,7 +3,7 @@ import '@fontsource-variable/archivo/standard.css';
 import '@fontsource-variable/martian-mono/standard.css';
 import archivoLatin from '@fontsource-variable/archivo/files/archivo-latin-standard-normal.woff2?url';
 import martianLatin from '@fontsource-variable/martian-mono/files/martian-mono-latin-standard-normal.woff2?url';
-import { ArrowUpRight, Copy, Moon, Sun, X } from '@lucide/astro';
+import { ArrowUpRight, Copy, X } from '@lucide/astro';
 import Panda from '../components/Panda.astro';
 import { site } from '../data/site';
 import '../styles/global.css';
@@ -23,7 +23,7 @@ const year = new Date().getUTCFullYear();
 <html lang="en">
   <head>
     <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#10120F" />
+    <meta name="theme-color" content="#FAF9F6" />
     <meta name="robots" content="noindex, nofollow" />
     <title>{pageTitle}</title><meta name="description" content={description} /><link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" /><meta property="og:title" content={pageTitle} /><meta property="og:description" content={description} />
@@ -32,10 +32,7 @@ const year = new Date().getUTCFullYear();
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" /><link rel="apple-touch-icon" href="/media/apple-touch-icon.png" />
     <link rel="preload" href={archivoLatin} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={martianLatin} as="font" type="font/woff2" crossorigin />
-    <script is:inline>
-      document.documentElement.classList.add('js');
-      try { const theme = localStorage.getItem('theme'); if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme; } catch {}
-    </script>
+    <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -46,27 +43,26 @@ const year = new Date().getUTCFullYear();
           {nav.map(item => <a href={item.href} class:list={{ 'nav-optional': item.optional }} aria-current={item.active ? 'page' : undefined}>{item.label}</a>)}
           <a class="nav-cta" href="#contact">Contact</a>
         </nav>
-        <button class="theme-switch js-only" type="button" role="switch" aria-checked="false" aria-label="Dark theme" data-theme-switch>
-          <Moon class="theme-moon" size={16} aria-hidden="true" /><Sun class="theme-sun" size={16} aria-hidden="true" />
-        </button>
       </div>
     </header>
     <main id="main"><slot /></main>
-    <section class="contact stage" id="contact" aria-labelledby="contact-title">
-      <div class="shell contact-inner">
-        <p class="kicker">Contact</p>
-        <h2 id="contact-title">Let’s talk<span class="dot">.</span></h2>
-        <p class="contact-lead">Have a role or a project in mind? Email is the fastest way to reach me.</p>
-        <div class="contact-email">
-          <a href={`mailto:${site.email}`}>{site.email}</a>
-          <button class="button copy-button js-only" type="button" data-copy={site.email}><Copy size={16} aria-hidden="true" /><span data-copy-label>Copy</span></button>
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="shell">
+        <div class="contact-panel">
+          <h2 id="contact-title">Let’s talk<span class="dot">.</span></h2>
+          <div class="contact-reach">
+            <div class="contact-email">
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+              <button class="button copy-button js-only" type="button" data-copy={site.email}><Copy size={15} aria-hidden="true" /><span data-copy-label>Copy</span></button>
+            </div>
+            <ul class="contact-links">
+              <li><a href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<ArrowUpRight size={14} aria-hidden="true" /></a></li>
+              <li><a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub<ArrowUpRight size={14} aria-hidden="true" /></a></li>
+              <li><a href={site.links.youtube} target="_blank" rel="noopener noreferrer">YouTube<ArrowUpRight size={14} aria-hidden="true" /></a></li>
+              <li><a href={site.links.chromium} target="_blank" rel="noopener noreferrer">Chromium code reviews<ArrowUpRight size={14} aria-hidden="true" /></a></li>
+            </ul>
+          </div>
         </div>
-        <ul class="contact-links">
-          <li><a href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<ArrowUpRight size={15} aria-hidden="true" /></a></li>
-          <li><a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub<ArrowUpRight size={15} aria-hidden="true" /></a></li>
-          <li><a href={site.links.youtube} target="_blank" rel="noopener noreferrer">YouTube<ArrowUpRight size={15} aria-hidden="true" /></a></li>
-          <li><a href={site.links.chromium} target="_blank" rel="noopener noreferrer">Chromium code reviews<ArrowUpRight size={15} aria-hidden="true" /></a></li>
-        </ul>
       </div>
     </section>
     <footer class="footer">

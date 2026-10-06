@@ -6,32 +6,37 @@ The site is built for the few seconds a recruiter gives it. The home page answer
 
 | Part | Content |
 | --- | --- |
-| Hero | Full screen on the dark stage. "Hi, I'm Calvin Diao.", the role ("Software engineer, from circuit boards to Chromium."), one sentence listing what he has built, two buttons, the photo with the "Coding is a game." sticker, and four credentials (Chromium, General Motors, Samsung R&D, McMaster) |
-| Projects | "Things I've built." Five cards: two large, three small. Each card shows the picture, one credential badge, the year and field, the title, one sentence and the tools. The whole card links to the project page |
-| Contact | Back on the stage: "Let's talk.", the email address with a copy button, and profile links. It closes every page |
+| Hero | "Calvin Diao.", the role ("Software engineer, from circuit boards to Chromium."), two buttons and two profile links, the photo with the "Coding is a game." sticker, and four credentials (Chromium, General Motors, Samsung R&D, McMaster) |
+| Projects | "Things I've built", with a link to the full write-ups. Five cards: two large, three small. Each card shows the picture, one credential badge, the year and field, the title and one sentence. The whole card links to the project page |
+| Contact | A soft orange panel: "Let's talk.", the email address with a copy button, and profile links. It closes every page |
 
-The hero fits a 1366 × 768 screen, credentials included. On phones the name, role and buttons fit the first screen.
+On a 1366 × 768 screen the credentials are visible without scrolling. On phones the name, role and buttons fit the first screen.
 
 ## Project pages
 
-A dark header with the title, one sentence and the demo video (click to load), which overlaps onto the paper. Below it, in reading order: four key facts, what Calvin built (highlights, then the write-up), tools and links, how it works (a chain of blocks; orange-topped blocks are Calvin's work, dashed blocks are platforms or off-the-shelf parts), photos, and the next project.
+The title, one sentence and the demo video (click to load). Below it, in reading order: four key facts, what Calvin built (three highlights and two short paragraphs; the full write-up is one click away), tools and links, how it works (a chain of blocks; orange blocks are Calvin's work, dashed blocks are platforms or off-the-shelf parts), photos, and the next project.
 
-The About page is a plain résumé: experience, education, research, patents, scholarships and awards. Writing lists the original blog articles.
+The About page is a plain résumé: experience, education, research, patents, scholarships and awards. The provincial and regional awards are folded under a disclosure. Writing lists the original blog articles.
 
 ## Visual system
 
-| Token | Light | Dark | Use |
-| --- | --- | --- | --- |
-| `--paper` | `#F4F3EE` | `#131512` | Page |
-| `--card` | `#FFFFFF` | `#1B1E1A` | Project cards, the project aside |
-| `--ink` | `#121412` | `#EDEEE8` | Text, rules |
-| `--accent` | `#B23C0B` | `#FF8A52` | Links and labels on paper |
-| `--stage` | `#10120F` | `#0B0C0B` | The dark bands: masthead, page heroes, contact |
-| `--spark` | `#FF6B2C` | same | Buttons, badges, the brand mark |
+The site is light only. There is no dark theme.
 
-Copper orange is the only accent. It marks what to click and what won (the badges), and appears as the period after the name. The stage carries a faint perfboard dot grid and a warm glow; the paper stays plain.
+| Token | Value | Use |
+| --- | --- | --- |
+| `--paper` | `#FAF9F6` | Page |
+| `--paper-2` | `#F2F0EB` | Tags, image placeholders |
+| `--card` | `#FFFFFF` | Cards, key facts, the project aside |
+| `--ink` | `#1D1C1A` | Text, the primary button |
+| `--ink-2`, `--ink-3` | `#55524D`, `#6F6B65` | Secondary text, labels (both meet WCAG AA on paper) |
+| `--line` | `#E6E3DC` | Card borders and rules |
+| `--accent` | `#E35A12` | The brand mark, the period after the name, badge icons, Calvin's blocks |
+| `--accent-ink` | `#B9440B` | Orange text: links, kickers |
+| `--accent-soft` | `#FDEFE6` | The contact panel, highlight ticks |
 
-Type: **Archivo** (variable width and weight) for display and body, set expanded and heavy for the name and section titles. **Martian Mono** is used only for small labels: years, fields and tools.
+Orange is the only accent and is used sparingly: the brand, what won (badge icons), and the parts Calvin built. Buttons are near-black. The hero has a faint warm glow; everything else is plain paper and white cards with thin borders.
+
+Type: **Archivo** for everything, at its normal width, bold but not heavy for the name and section titles. **Martian Mono** appears only in the Chromium illustration and in code.
 
 Motion: the hero rises in once on load, cards lift on hover, and the sticker straightens when the photo is hovered. Reduced motion turns all of it off.
 

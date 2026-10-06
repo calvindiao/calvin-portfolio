@@ -3,7 +3,7 @@ import { ArrowRight } from '@lucide/astro';
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="Page not found">
-  <section class="page-hero stage not-found" aria-labelledby="nf-title">
+  <section class="page-hero not-found" aria-labelledby="nf-title">
     <div class="shell not-found-inner">
       <svg class="unplugged" viewBox="0 0 360 120" role="img" aria-label="A cable whose plug has come out of its socket">
         <path class="unplugged-cable" d="M0 60 H 118" />
@@ -16,7 +16,7 @@ import Layout from '../layouts/Layout.astro';
       </svg>
       <p class="kicker">Error 404</p>
       <h1 id="nf-title">This page came unplugged<span class="dot">.</span></h1>
-      <p class="page-lead">Nothing is connected at this address. The page may have moved; the projects are still on the home page.</p>
+      <p class="page-lead">Nothing is connected at this address.</p>
       <div class="hero-actions"><a class="button primary" href="/#projects">See the projects<ArrowRight size={16} aria-hidden="true" /></a><a class="button" href="/writing/">All writing</a></div>
     </div>
   </section>

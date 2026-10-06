@@ -8,7 +8,7 @@ const { Content } = await render(post);
 const date = new Date(`${post.data.date}T12:00:00Z`).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 ---
 <Layout title={post.data.title} description={`Original project write-up: ${post.data.title}. By Calvin Diao.`}>
-  <section class="page-hero stage" aria-labelledby="article-title">
+  <section class="page-hero" aria-labelledby="article-title">
     <div class="shell page-hero-inner article-hero">
       <a class="back-link" href="/writing/"><ArrowLeft size={16} aria-hidden="true" />All writing</a>
       <p class="kicker"><time datetime={post.data.date}>{date}</time></p>

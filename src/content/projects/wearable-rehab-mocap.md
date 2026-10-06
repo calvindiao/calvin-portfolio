@@ -31,12 +31,6 @@ specs:
   - { parameter: "Offline storage", condition: "SD card over SDIO", value: "FATFS" }
 ---
 
-Rehabilitation exercises are easier to understand when movement becomes visible. I built a wearable motion capture prototype aimed at making home-based training easier to observe and assess.
+Rehabilitation exercises are easier to judge when movement becomes visible. Wearable sensor nodes fuse accelerometer, gyroscope and magnetometer readings with a quaternion Kalman filter; STM32 firmware stores the data on an SD card and sends it wirelessly to a PC, where MATLAB and OpenSim reconstruct the movement and joint range.
 
-The system combines multiple inertial sensors with embedded processing. Quaternion-based Kalman filtering brings together accelerometer, gyroscope, and magnetometer readings to estimate orientation. Firmware on an STM32L0 manages sensing, buffering, and storage, while a wireless module carries the data to a computer.
-
-On the PC side, a MATLAB and OpenSim workflow reconstructs body movement and supports inverse kinematics and joint range-of-motion analysis. An SD card provides an offline recording path alongside wireless transmission.
-
-My work covered the circuit design, device structure, embedded software, sensor fusion, and host-side analysis. The device includes a magnetic switching mechanism intended to make it easier to use during exercises.
-
-This was an engineering prototype exploring objective movement feedback, rather than a claim of clinical validation. The demo shows the sensing and reconstruction workflow; the original write-up includes hardware diagrams, filtering details, prototype photos, and angle measurement tests.
+I did the circuit design, device structure, firmware, sensor fusion and host-side analysis. It is an engineering prototype, not a clinically validated device.

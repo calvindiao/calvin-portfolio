@@ -1,6 +1,6 @@
 # Calvin Diao's portfolio
 
-Calvin's portfolio, built for the few seconds a recruiter gives it. The home page has three parts: a full-screen hero (name, one-line role, photo, four credentials), five large project cards (picture, credential badge, title, one sentence), and contact. Each card opens a project page with the demo video, key facts, what Calvin built, how it works, and photos. Built with Astro and TypeScript. The original technical articles remain available at their existing URLs.
+Calvin's portfolio, built for the few seconds a recruiter gives it. The site is light and says little: the home page has a short hero (name, one-line role, photo, four credentials), five project cards (picture, credential badge, title, one sentence), and contact. Each card opens a project page with the demo video, key facts, what Calvin built in two short paragraphs, how it works, and photos. Built with Astro and TypeScript. The original technical articles remain available at their existing URLs.
 
 ## Local development
 
@@ -56,11 +56,11 @@ GitHub Actions validates pull requests and `main` under Node 24. Cloudflare buil
 
 ## Browser acceptance
 
-At 390, 768, 1024, and 1440 px, in light and dark themes: check layout overflow, that the hero fits a 1366 × 768 screen, that a click anywhere on a project card opens its page, the theme switch and its persistence, the video on each project page (starting one demo closes any other), image expansion and focus restoration, reduced motion, legacy article paths, external links, and the actual 404 response. Without JavaScript, the hero, cards, project pages, articles, and YouTube links remain usable.
+At 390, 768, 1024, and 1440 px: check layout overflow, that the hero's credentials are visible on a 1366 × 768 screen, that a click anywhere on a project card opens its page, the video on each project page (starting one demo closes any other), image expansion and focus restoration, reduced motion, legacy article paths, external links, and the actual 404 response. Without JavaScript, the hero, cards, project pages, articles, and YouTube links remain usable.
 
 ## Design resources
 
-The concept, page structure, tokens and references are documented in [docs/design.md](docs/design.md). The site uses locally hosted Archivo and Martian Mono and Lucide SVG icons; the hero's entrance animation is plain CSS. Project photos come from the original blog, and the panda mark is redrawn from the techliker.com favicon.
+The concept, page structure, tokens and references are documented in [docs/design.md](docs/design.md). The site uses locally hosted Archivo (Martian Mono only inside the Chromium illustration and code) and Lucide SVG icons; the hero's entrance animation is plain CSS. Project photos come from the original blog, and the panda mark is redrawn from the techliker.com favicon.
 
 ## Content license
 

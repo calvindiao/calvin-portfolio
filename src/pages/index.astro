@@ -9,13 +9,11 @@ import { credentials, site } from '../data/site';
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
 <Layout>
-  <section class="hero stage" aria-labelledby="hero-title">
+  <section class="hero" aria-labelledby="hero-title">
     <div class="shell hero-inner">
       <div class="hero-copy">
-        <p class="hero-hello">Hi, I’m</p>
-        <h1 id="hero-title">Calvin<br />Diao<span class="dot">.</span></h1>
-        <p class="hero-role">Software engineer, from <em>circuit boards</em> to <em>Chromium</em>.</p>
-        <p class="hero-lead">I’ve built competition robots, a wearable motion-capture system, live 360° video calls on AR glasses, and C++ for Chromium’s DNS stack.</p>
+        <h1 id="hero-title">Calvin Diao<span class="dot">.</span></h1>
+        <p class="hero-role">Software engineer, from <strong>circuit boards</strong> to <strong>Chromium</strong>.</p>
         <div class="hero-actions">
           <a class="button primary" href="#projects">See my projects<ArrowDown size={17} aria-hidden="true" /></a>
           <a class="button" href={`mailto:${site.email}`}>Email me</a>
@@ -26,26 +24,22 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
         </div>
       </div>
       <figure class="hero-photo">
-        <div class="hero-photo-frame"><ResponsiveImage image="avatar.jpg" priority sizes="(max-width: 760px) 86vw, 440px" /></div>
+        <div class="hero-photo-frame"><ResponsiveImage image="avatar.jpg" priority sizes="(max-width: 860px) 92vw, 360px" /></div>
         <p class="sticker"><Panda bamboo={false} /><span>Coding is a game.</span></p>
       </figure>
       <ul class="creds" aria-label="Experience and education">
-        {credentials.map(item => <li><strong>{item.org}</strong><span class="creds-detail">{item.detail}</span><span class="creds-years">{item.years}</span></li>)}
+        {credentials.map(item => <li><strong>{item.org}</strong><span>{item.detail}</span><span class="creds-years">{item.years}</span></li>)}
       </ul>
     </div>
   </section>
 
   <section class="shell projects" id="projects" aria-labelledby="projects-title">
     <header class="section-head">
-      <div>
-        <p class="kicker">Selected projects</p>
-        <h2 id="projects-title">Things I’ve built.</h2>
-      </div>
-      <p>From competition robots to Chromium. Open any project for the demo video and how it works.</p>
+      <h2 id="projects-title">Things I’ve built</h2>
+      <a class="text-link" href="/writing/">Full write-ups<ArrowRight size={16} aria-hidden="true" /></a>
     </header>
     <div class="cards">
       {projects.map((project, index) => <ProjectCard project={project} size={index < 2 ? 'large' : 'small'} />)}
     </div>
-    <p class="projects-more"><a class="text-link" href="/writing/">Read the original write-ups<ArrowRight size={16} aria-hidden="true" /></a></p>
   </section>
 </Layout>
