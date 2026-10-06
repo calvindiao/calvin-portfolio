@@ -8,5 +8,5 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'always',
   integrations: [sitemap()],
-  markdown: { processor: unified({ remarkPlugins: [legacyImages] }), shikiConfig: { theme: 'github-dark' } }
+  markdown: { processor: unified({ remarkPlugins: [legacyImages] }), shikiConfig: { theme: 'github-light' } }
 });

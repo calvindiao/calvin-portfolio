@@ -5,7 +5,7 @@ legacyPath: "/ar-panoramic-calling/"
 updated: "2025-12-09"
 project: "ar-panoramic-calling"
 ---
-This is my M.Eng. master project. I built an **AR panoramic video calling system** that enhances an “immersive calling” experience: users can wear **Rokid Air AR glasses** and look around a remote environment in **360°**, as if stepping into the other person’s room. 🤩
+This is my M.Eng. master project. I built an **AR panoramic video calling system** that enhances an “immersive calling” experience: users can wear **Rokid Air AR glasses** and look around a remote environment in **360°**, as if stepping into the other person’s room.
 
 
 
@@ -17,7 +17,7 @@ The system follows a modular **capture → cloud distribution → playback** wor
 
 ---
 
-### 🧠 Software Development
+### Software Development
 
 - Built the **Rokid AR Calling App** in **Unity (Android)** with Rokid UXR SDK integration for stereo rendering and **3DoF head tracking**. 
 - Integrated **AVPro Video** as the live playback engine (HLS/M3U8), decoding the stream and mapping frames onto the inner surface of a sphere so the user stands inside a panoramic dome.
@@ -26,7 +26,7 @@ The system follows a modular **capture → cloud distribution → playback** wor
 
 ---
 
-### ⚙️ System & Cloud Design
+### System & Cloud Design
 
 - Used a cloud live streaming platform (VolcEngine) to ingest, transcode, and distribute the panoramic stream. The camera pushes via **RTMP**, while clients pull via **HLS (M3U8)** for broad compatibility. 
 - Configured **push/pull domains** and DNS **CNAME** records (e.g., `push.example.com`, `pull.example.com`), enabling stable publishing and playback URLs for the AR app. 
@@ -34,7 +34,7 @@ The system follows a modular **capture → cloud distribution → playback** wor
 
 ---
 
-### 💡 Project Highlights
+### Project Highlights
 
 - **Immersive rendering path:** MediaPlayer decodes the live stream → sphere mapping creates a full 360° environment, removing the “flat video window” feeling. 
 - **Fast call establishment & stability validation:** after tapping “Call”, connection typically completes in **~3 to 5 seconds** while playback stayed smooth without obvious stutter. 
@@ -42,7 +42,7 @@ The system follows a modular **capture → cloud distribution → playback** wor
 
 ---
 
-### 📸 Project Gallery
+### Project Gallery
 
 <p align="center">
   <img src="/assets/AR/workflow.png" width="70%">
@@ -70,7 +70,7 @@ The system follows a modular **capture → cloud distribution → playback** wor
 
 ---
 
-### 🎥 Demo Video
+### Demo Video
 
 <div class="article-demo" data-video="shrMtn-MXbk" data-video-title="AR Panoramic Calling Demo"><button class="button primary" data-watch>Watch demo</button><a href="https://www.youtube.com/watch?v=shrMtn-MXbk" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>
 
@@ -78,7 +78,7 @@ The system follows a modular **capture → cloud distribution → playback** wor
 
 ---
 
-### 🧪 Results & Limitations
+### Results & Limitations
 
 - **Latency tradeoff (HLS):** an inherent **~2 to 5s** delay is expected; and cross-region routes can further increase delay.
 - **Device constraints:** Rokid Air relies on a phone for compute; long sessions (~20 min) can cause heat and performance dips, with frame rate typically **15–30 fps** and occasional stutter during fast motion. 

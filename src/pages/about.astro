@@ -6,23 +6,18 @@ import { education, experience, nationalAwards, patents, provincialAwards, publi
 import { site } from '../data/site';
 ---
 <Layout title="About" description="Calvin Diao: Chromium contributor, software engineer at General Motors and Samsung R&D, M.Eng. McMaster (GPA 4.00). Experience, education, patents and awards.">
-  <section class="page-hero stage about-hero" aria-labelledby="about-title">
+  <section class="page-hero about-hero" aria-labelledby="about-title">
     <div class="shell about-hero-inner">
       <div class="about-intro">
-        <p class="kicker">About</p>
-        <h1 id="about-title">Hi, I’m Calvin<span class="dot">.</span></h1>
+        <h1 id="about-title">About</h1>
         <p class="page-lead">An engineer who enjoys the whole path from a circuit board to the software running on it.</p>
-        <div class="about-text">
-          <p>I like designing electronics, bringing hardware to life with embedded software, and connecting it to larger software systems.</p>
-          <p>I contributed to Chromium through Google Summer of Code in 2025 and completed my M.Eng. in Computing and Software at McMaster University. Before that, I worked as a software engineer at General Motors and at Samsung’s R&amp;D center.</p>
-          <p>Away from projects, I enjoy movies, working out, the home theater I built (a NAS and a projector), and time with my cat, Tandy.</p>
-        </div>
+        <p class="about-text">Away from projects: movies, working out, the home theater I built, and my cat, Tandy.</p>
         <div class="hero-actions">
-          <a class="button primary" href={`mailto:${site.email}`}>Email me</a>
+          <a class="button primary" href={`mailto:${site.email}`}>Email</a>
           <a class="button" href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<ArrowUpRight size={16} aria-hidden="true" /></a>
         </div>
       </div>
-      <figure class="about-photo"><ResponsiveImage image="avatar.jpg" priority sizes="(max-width: 860px) 80vw, 400px" /></figure>
+      <figure class="about-photo"><ResponsiveImage image="avatar.jpg" priority sizes="(max-width: 860px) 92vw, 300px" /></figure>
     </div>
   </section>
 
@@ -89,10 +84,10 @@ import { site } from '../data/site';
           <h3 class="cv-label">National competitions</h3>
           <ul class="award-list">{nationalAwards.map(item => <li><strong>{item.result}</strong><span>{item.project ? <a href={`/projects/${item.project}/`}>{item.event}</a> : item.event}</span></li>)}</ul>
         </div>
-        <div class="award-group award-group-wide">
-          <h3 class="cv-label">Provincial and regional competitions</h3>
+        <details class="award-group award-group-wide more">
+          <summary class="cv-label">{provincialAwards.length} provincial and regional awards</summary>
           <ul class="award-list award-list-columns">{provincialAwards.map(item => <li><strong>{item.result}</strong><span>{item.event}</span></li>)}</ul>
-        </div>
+        </details>
       </div>
     </section>
   </div>

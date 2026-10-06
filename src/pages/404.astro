@@ -3,21 +3,12 @@ import { ArrowRight } from '@lucide/astro';
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="Page not found">
-  <section class="page-hero stage not-found" aria-labelledby="nf-title">
-    <div class="shell not-found-inner">
-      <svg class="unplugged" viewBox="0 0 360 120" role="img" aria-label="A cable whose plug has come out of its socket">
-        <path class="unplugged-cable" d="M0 60 H 118" />
-        <rect class="unplugged-plug" x="118" y="40" width="54" height="40" rx="8" />
-        <path class="unplugged-pins" d="M172 50 H 192 M172 70 H 192" />
-        <rect class="unplugged-socket" x="246" y="30" width="70" height="60" rx="12" />
-        <path class="unplugged-holes" d="M264 50 H 280 M264 70 H 280" />
-        <path class="unplugged-cable" d="M316 60 H 360" />
-        <path class="unplugged-spark" d="M210 40 l8 -12 M222 60 h14 M210 80 l8 12" />
-      </svg>
+  <section class="page-hero not-found" aria-labelledby="nf-title">
+    <div class="shell page-hero-inner">
       <p class="kicker">Error 404</p>
-      <h1 id="nf-title">This page came unplugged<span class="dot">.</span></h1>
-      <p class="page-lead">Nothing is connected at this address. The page may have moved; the projects are still on the home page.</p>
-      <div class="hero-actions"><a class="button primary" href="/#projects">See the projects<ArrowRight size={16} aria-hidden="true" /></a><a class="button" href="/writing/">All writing</a></div>
+      <h1 id="nf-title">Page not found</h1>
+      <p class="page-lead">This page doesn’t exist or has moved.</p>
+      <div class="hero-actions"><a class="button primary" href="/#projects">View projects<ArrowRight size={16} aria-hidden="true" /></a><a class="button" href="/writing/">All writing</a></div>
     </div>
   </section>
 </Layout>

@@ -1,27 +1,24 @@
 ---
-// One project on the home page: the picture, the credential, the title and one sentence.
+// One project on the home page: the picture, the year and field, the title, one sentence and its credential.
 // The title link stretches over the whole card, so the card is one click target with a short accessible name.
 import type { CollectionEntry } from 'astro:content';
-import { ArrowRight, Award, CodeXml, GraduationCap, Play, Trophy } from '@lucide/astro';
+import { Play } from '@lucide/astro';
 import ResponsiveImage from './ResponsiveImage.astro';
 import ChromiumFigure from './ChromiumFigure.astro';
 interface Props { project: CollectionEntry<'projects'>; size?: 'large' | 'small' | 'wide'; heading?: 'h2' | 'h3'; }
 const { project, size = 'small', heading = 'h3' } = Astro.props;
-const { title, summary, year, field, cover, coverAlt, video, badge, tools } = project.data;
-const BadgeIcon = { trophy: Trophy, award: Award, graduation: GraduationCap, code: CodeXml }[badge.icon];
+const { title, summary, year, field, cover, coverAlt, video, badge } = project.data;
 const Heading = heading;
-const sizes = size === 'large' ? '(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 600px' : '(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 400px';
+const sizes = size === 'large' ? '(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 530px' : '(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 350px';
 ---
 <article class:list={['card', `card-${size}`]}>
   <div class="card-media">
     {cover === 'chromium-flow' ? <ChromiumFigure /> : <ResponsiveImage image={cover} alt={coverAlt} sizes={sizes} />}
-    <span class="card-badge"><BadgeIcon size={15} aria-hidden="true" />{badge.label}</span>
-    {video && <span class="card-video"><Play size={11} fill="currentColor" aria-hidden="true" />Demo video</span>}
   </div>
   <div class="card-body">
-    <p class="card-meta"><span>{year}</span><span>{field}</span></p>
+    <p class="card-meta">{year} · {field}</p>
     <Heading class="card-title"><a href={`/projects/${project.id}/`}>{title}</a></Heading>
     <p class="card-summary">{summary}</p>
-    <p class="card-foot"><span class="card-tools">{tools.join(' · ')}</span><span class="card-go" aria-hidden="true"><ArrowRight size={18} /></span></p>
+    <p class="card-foot"><span class="card-badge">{badge}</span>{video && <span class="card-video"><Play size={11} aria-hidden="true" />Demo video</span>}</p>
   </div>
 </article>
